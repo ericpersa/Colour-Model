@@ -1,0 +1,179 @@
+# Source handprint.com/HP/WCL/huepurity.html
+#COLOR INDEX — generic C.I. name of the pigment (this is missing for convenience mixtures and unclassified mineral pigments)
+#PIGMENT NAME — common pigment name or marketing name
+#J, aC, bC — pigment location in the CIECAM color appearance space [Value, a,b]
+#C — CIECAM pigment chroma, defined as (aC2+bC2)0.5
+#Hue Angle — CIECAM hue angle, defined as ARCTAN(bC/aC)
+#Hue Purity — CIECAM hue purity, the ratio between the pigment chroma and the chroma of the optimal color of matching lightness and hue angle
+#aHP, bHP — ab coordinates for pigment hue purity, scaled so that maximum possible hue purity equals 1.0
+# COLOR INDEX ,	PIGMENT NAME				,	J ,	C	,	aC	,	bC	,	HueAngle, Hue Purity,	aHP,	bHP
+NA,sodalite,15,3,-3,0,182,0.04,-0.04,0.00
+PBr6,iron oxide black,17,7,5,4,38,0.07,0.05,0.04
+NA,hematite,21,6,-1,6,95,0.08,-0.01,0.08
+NA,kyanite,41,10,-10,2,170,0.09,-0.09,0.02
+NA,vivianite,35,12,-9,8,140,0.11,-0.08,0.07
+NA,jadeite,17,9,-7,6,141,0.11,-0.09,0.07
+PBr33,zinc iron chromite brown,25,14,12,8,33,0.12,0.10,0.06
+NA,bloodstone,22,10,6,8,55,0.12,0.07,0.10
+PBk31,perylene green,21,11,-8,8,133,0.13,-0.09,0.09
+NA,indigo,19,12,-1,-12,267,0.13,-0.01,-0.13
+NA,purpurite,20,13,13,3,13,0.13,0.13,0.03
+NA,hematite violet,26,14,10,10,47,0.15,0.10,0.11
+NA,piemontite,20,16,12,11,40,0.16,0.12,0.11
+NA,zoisite,22,15,-9,12,128,0.17,-0.10,0.13
+NA,cote d'azur violet,37,22,14,17,50,0.19,0.12,0.14
+NA,tiger's eye burnt,23,19,12,15,51,0.20,0.13,0.16
+NA,green fuchsite,60,29,-25,15,149,0.21,-0.18,0.11
+PBr7,burnt umber,28,25,18,16,42,0.21,0.16,0.14
+PG17,chromium oxide green,35,24,-18,16,139,0.21,-0.16,0.14
+PG8,hooker's green,26,23,-19,14,144,0.22,-0.18,0.13
+NA,bauxite,24,21,15,16,47,0.22,0.15,0.16
+NA,apatite,20,16,-14,-8,208,0.23,-0.20,-0.11
+PBr7,raw umber,34,23,12,20,59,0.24,0.12,0.21
+PR101,mars brown,36,29,20,21,47,0.24,0.17,0.18
+PR101,mars violet,25,26,25,10,21,0.24,0.23,0.09
+NA,red fuchsite,41,31,27,17,32,0.24,0.21,0.13
+PR101,lunar red,25,30,26,15,31,0.25,0.21,0.13
+NA,malachite,50,33,-22,24,133,0.25,-0.17,0.18
+NA,hematite burnt scarlet,25,32,26,19,36,0.26,0.21,0.15
+NA,lazurite,26,25,-16,-19,230,0.27,-0.17,-0.21
+PG26,cobalt green dark,33,27,-27,0,180,0.28,-0.28,0.00
+NA,azurite,26,25,-20,-14,215,0.28,-0.23,-0.16
+NA,serpentine,27,23,-8,22,110,0.28,-0.10,0.27
+NA,yavapaiite,29,27,14,24,60,0.30,0.15,0.26
+PR233,pinkcolor,42,38,34,16,25,0.31,0.28,0.13
+PBr41,disazo condensation brown,29,39,33,21,32,0.31,0.26,0.17
+PBr25,benzimidazolone brown,31,40,34,21,32,0.32,0.27,0.17
+NA,hooker's green,33,37,-30,21,144,0.32,-0.26,0.19
+NA,pipestone,33,43,35,24,35,0.32,0.27,0.19
+NA,sedona,31,40,30,27,42,0.33,0.24,0.22
+PV23,dioxazine purple,20,31,15,-27,299,0.34,0.16,-0.29
+NA,sap green,33,34,-20,28,126,0.34,-0.20,0.27
+PR101,indian red,33,41,37,18,26,0.34,0.31,0.15
+PR101,venetian red,31,42,37,19,28,0.34,0.30,0.16
+NA,tiger's eye,23,15,3,14,77,0.34,0.08,0.34
+PR171,benzimidazolone maroon,26,37,36,9,14,0.35,0.34,0.09
+PR101,light red,33,44,38,24,32,0.35,0.29,0.18
+PBr11,magnesium ferrite brown,40,48,36,32,42,0.35,0.26,0.23
+PB60,indanthrone blue,18,32,0,-32 ,271,0.35,0.00,-0.35
+NA,olive green,33,31,-5,31,99,0.36,-0.06,0.35
+PBr7,burnt sienna,37,48,40,27,35,0.36,0.30,0.21
+PG50,cobalt titanate green YS,42,46,-41,20,154,0.36,-0.33,0.16
+PY53,nickel titanate yellow,85,46,-2,46,92,0.36,-0.01,0.36
+NA,naples yellow,75,45,19,41,65,0.37,0.16,0.34
+PG19,cobalt green,50,40,-39,-7,190,0.39,-0.38,-0.07
+PY119,mars yellow,43,50,34,38,48,0.39,0.26,0.29
+PBr7,raw sienna,55,48,23,42,61,0.39,0.19,0.34
+PBr24,titanate gold ochre,68,53,24,48,64,0.39,0.17,0.35
+PY42,yellow ochre,58,50,22,45,64,0.40,0.17,0.36
+PV16,manganese violet,31,44,39,-21,331,0.40,0.35,-0.19
+NA,green turquoise,30,42,-40,11,164,0.41,-0.40,0.11
+PY42,mars yellow,53,50,24,44,61,0.41,0.20,0.36
+NA,blue turquoise,36,43,-42,-9,193,0.43,-0.42,-0.09
+PY42,gold ochre,50,58,37,45,51,0.44,0.28,0.34
+PB27,prussian blue,19,40,-17,-36,245,0.45,-0.19,-0.40
+PV15,ultramarine violet (red),36,42,21,-37,299,0.45,0.22,-0.39
+PG50,cobalt green [BS],50,48,-48,0,180,0.45,-0.45,0.00
+PY129,green gold,53,49,4,49,86,0.46,0.04,0.46
+PG10,nickel azomethine green,58,56,-8,55,98,0.47,-0.07,0.46
+PR88,thioindigo violet,29,50,50,-2,358,0.47,0.47,-0.02
+PR175,benzimidazolone scarlet,31,56,50,26,27,0.47,0.42,0.21
+PO49,quinacridone gold,52,60,33,50,56,0.47,0.26,0.39
+PV14,cobalt violet deep,46,47,33,-32,316,0.47,0.34,-0.33
+PB27,antwerp blue,35,48,-29,-38,233,0.47,-0.28,-0.38
+NA,amazonite,30,47,-47,3,176,0.48,-0.47,0.03
+PG18,viridian,42,48,-48,3,177,0.48,-0.48,0.03
+PO48,quinacridone burnt orange,42,63,52,37,35,0.48,0.40,0.28
+NA,permanent green light,43,63,-54,32,149,0.49,-0.42,0.25
+PG36,phthalo green YS,39,57,-54,18,162,0.49,-0.47,0.15
+PB36,cobalt turquoise,39,48,-45,-17,201,0.49,-0.46,-0.17
+NA,permanent green deep,37,58,-54,22,158,0.49,-0.46,0.19
+PY150,nickel azo yellow,67,62,14,61,77,0.49,0.11,0.48
+PR206,quinacridone madder,36,60,54,25,25,0.50,0.45,0.21
+PV49,cobalt violet light,50,58,52,-26,334,0.50,0.45,-0.22
+PG21,[emerald green],59,61,-57 ,20,161,0.50,-0.48,0.17
+PY117,green gold,58,60,-1,60,91,0.51,-0.01,0.51
+PY175,benzimidazolone lemon,83,65,-8,64,97,0.51,-0.06,0.51
+PY108,anthrapyrimidine yellow,72,67,14,65,78,0.52,0.11,0.50
+PG7,phthalo green BS,31,51,-51,1,178,0.52,-0.52,0.01
+PV32,benzamida bordeaux,30,59,56,18,18,0.52,0.50,0.16
+PB16,phthalo turquoise,23,44,-36,-27,217,0.52,-0.42,-0.31
+PB36,cerulean blue GS,35,52,-39,-34,221,0.53,-0.40,-0.34
+PV39,blue violet,20,49,8,-49,279,0.54,0.08,-0.53
+PY184,bismuth yellow,87,69,-8,68,97,0.54,-0.06,0.54
+PY40,aureolin,77,69,2,69,88,0.54,0.02,0.54
+NA,rhodonite,36,61,60,13,12,0.55,0.54,0.11
+PO65,methin nickel scarlet,33,64,59,25,23,0.55,0.50,0.21
+PY1,hansa yellow G,84,70,1,70,89,0.55,0.01,0.55
+PY153,nickel dioxine yellow,71,74,29,69,67,0.55,0.21,0.51
+PV19,quinacridone violet,27,58,58,7,7,0.55,0.55,0.06
+PR179,perylene maroon,29,63,60,21,20,0.55,0.52,0.19
+PY35,cadmium yellow lemon,89,72,-10,71,98,0.57,-0.08,0.56
+PB36,cerulean blue,37,58,-36,-45,231,0.57,-0.36,-0.44
+PY3,hansa yellow light,88,73,-12,72,99,0.58,-0.09,0.57
+PY65,hansa yellow deep,77,78,24,75,72,0.58,0.18,0.55
+NA,phthalo yellow green,55,79,-53,58,133,0.58,-0.40,0.43
+PY151,benzimidazolone yellow,84,75,-1,75,91,0.59,-0.01,0.59
+PY120,benzimidiazolone yellow,80,75,8,75,84,0.59,0.06,0.58
+NA,permanent green yellowish,86,75,-11,74,99,0.59,-0.09,0.58
+PG50,cobalt teal,56,59,-56, -19,199,0.59,-0.56,-0.19
+PY35,cadmium yellow,81,78,11,78,82,0.60,0.08,0.60
+PY154,benzimidazolone yellow,83,77,1,77,89,0.60,0.01,0.60
+PY110,isoindolinone yellow,72,76,34,68,63,0.60,0.27,0.54
+PY35,cadmium yellow light,86,77,-2,77,91,0.60,-0.01,0.60
+PY35,cadmium yellow pale,86,77,-4,77,93,0.61,-0.03,0.60
+PY139,isoindolinone yellow deep,72,77,35,68,63,0.61,0.28,0.54
+PV15,ultramarine violet (blue),22,57,-4,-57,266,0.61,-0.04,-0.61
+PR176,benzimidazolone carmine,32,70,66,24,20,0.61,0.58,0.21
+PY138,quinophthalone yellow,82,79,0,79,90,0.62,0.00,0.62
+PR149,perylene scarlet,35,74,68,29,23,0.62,0.57,0.24
+PR216,brown madder,39,74,68,30,23,0.62,0.57,0.25
+PR122,quinacridone magenta,38,71,71,1,1,0.63,0.63,0.01
+PY97,hansa yellow,85,80,-2,80,91,0.63,-0.01,0.63
+PR202,quinacridone magenta,33,70,69,12,10,0.63,0.62,0.11
+PO62,benzimidazolone orange,65,77,50,59,50,0.63,0.41,0.48
+PR214,scheveningen red deep,33,74,68,29,23,0.63,0.58,0.25
+PR264,pyrrole carmine,32,73,69,25,20,0.64,0.60,0.22
+PV19,quinacridone rose,44,73,72,13,10,0.64,0.63,0.12
+PR83,alizarin crimson,33,73,70,22,17,0.64,0.61,0.19
+PB33,manganese blue,46,66,-49,-45,223,0.65,-0.47,-0.44
+PV19,quinacridone red,33,75,71,25,19,0.65,0.61,0.21
+PR106,vermilion [genuine],47,80,71,38,28,0.66,0.58,0.31
+PO67,pyrazoloquinazolone orange,51,83,68,48,35,0.66,0.54,0.38
+PR108,cadmium red deep,36,78,73,28,21,0.66,0.62,0.24
+PR178,perylene red,35,79,73,28,21,0.67,0.62,0.24
+PO20,cadmium orange,60,82,59,58,44,0.67,0.48,0.47
+PB72,cobalt blue deep,29,65,-20,-62,252,0.67,-0.21,-0.64
+PV42,quinacridone pink,35,76,74,16,12,0.68,0.66,0.14
+PB28,cobalt blue,34,66,-28,-60,245,0.68,-0.29,-0.62
+PO69,isoindoline orange,55,84,66,52,38,0.68,0.53,0.42
+PO71,pyrrole orange,50,85,71,46,33,0.68,0.57,0.37
+PB17,phthalo cyan,35,68,-50,-46,223,0.69,-0.50,-0.47
+PO34,dizazopyrazolone orange,54,83,71,44,32,0.69,0.59,0.36
+PR177,anthraquinone red,33,80,76,24,18,0.69,0.66,0.21
+PO5,beta naphthol scarlet,51,87,72,50,35,0.70,0.57,0.40
+PO36,benzimidazolone vermilion,48,90,76,49,33,0.71,0.60,0.38
+PR108,cadmium red,41,86,78,36,24,0.71,0.65,0.30
+PO43,perinone orange,53,88,72,52,36,0.72,0.58,0.42
+PR260,vermilion extra,42,87,79,36,24,0.72,0.66,0.30
+PO73,pyrrole orange,50,94,75,57,37,0.73,0.58,0.44
+PB29,ultramarine blue,21,70,-19,-68,254,0.73,-0.20,-0.70
+PR170,naphthol AS red,38,86,81,30,20,0.73,0.69,0.25
+PR168,anthraquinone scarlet,44,88,79,39,26,0.73,0.66,0.32
+PR251,pyrazoloquinazolone scarlet,43,90,80,41,27,0.73,0.65,0.33
+PR209,quinacridone red,46,86,80,32,22,0.74,0.68,0.27
+PR9,naphthol scarlet,44,89,81,37,25,0.74,0.67,0.31
+PR255,pyrrole scarlet,44,91,81,41,27,0.74,0.67,0.33
+PR112,naphthol AS red,43,91,81,42,27,0.75,0.67,0.34
+PR108,cadmium scarlet,46,91,80,43,28,0.75,0.66,0.36
+PR242,disazo condensation scarlet,44,96,82,49,31,0.76,0.65,0.39
+PR188,naphthol scarlet,48,92,81,45,29,0.77,0.67,0.37
+PR254,pyrrole red,38,94,85,38,24,0.78,0.71,0.32
+PR N/A,quinacridone carmine,33,79,74,26,19,0.68,0.64,0.22
+PV7+PV15,bright violet,27,73,65,-32,334,0.68,0.61,-0.30
+PB15:3,phthalo blue GS,28,60,-36,-48,233,0.63,-0.38,-0.50
+PB15:3,phthalo blue,27,57,-31,-48,237,0.59,-0.32,-0.50
+PY55+PY53,diarylide yellow,75,77,23,73,73,0.57,0.17,0.55
+PY37:1,cadmium yellow deep,71,77,34,68,63,0.57,0.26,0.51
+PB15:1,phthalo blue RS,24,54,-23,-49,245,0.56,-0.24,-0.51
+PB27+PY35,prussian green,25,27,-25,-8,198,0.31,-0.29,-0.09
