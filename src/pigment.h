@@ -1,16 +1,13 @@
-// function prototype for question 4. function will be used to load data into an array of pigment structures
-// int loadPigmentData(char* filename, pigment_t* pArray, int* n);
-
-struct pigment_t {
-    float abHp[2];
-    int hueAngle;
-    int chroma;
-    float huePurity;
-    int abValue[2];
-    int value;
-    char* ciName;
-    char* pigmentName;
-}
+typedef struct pigment_t {
+    char ciName[50];        // Color Index
+    char pigmentName[50];   // Pigment Name
+    int value;              // J (Value)
+    int abValue[2];         // aC, bC
+    int chroma;             // Chroma
+    int hueAngle;           // Hue Angle
+    float huePurity;        // Hue Purity
+    float abHp[2];          // aHP, bHP
+} pigment_t;
 
 typedef struct paint_t{
     char ciName[30];
@@ -29,3 +26,5 @@ typedef struct paint_t{
 }paint_t;
 
 int loadPaintData( char* , paint_t* , int*);
+
+pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n);
