@@ -1,12 +1,12 @@
 typedef struct pigment_t {
-    char ciName[50];        // Color Index
-    char pigmentName[50];   // Pigment Name
-    int value;              // J (Value)
-    int abValue[2];         // aC, bC
-    int chroma;             // Chroma
-    int hueAngle;           // Hue Angle
-    float huePurity;        // Hue Purity
-    float abHp[2];          // aHP, bHP
+    char ciName[50];
+    char pigmentName[50];
+    int value;
+    int abValue[2];
+    int chroma;  
+    int hueAngle;   
+    float huePurity;    
+    float abHp[2];        
 } pigment_t;
 
 typedef struct paint_t{
