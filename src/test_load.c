@@ -26,14 +26,13 @@ int main(void){
     }
 
     int testnum = 5;
-    
+    // print 
     printf("Success. Loaded paints:\n");
     printf("testing line %i in array:\n", testnum);
     printf("ci:%s\n Mn:%s\n man:%s\n", paint_arr[testnum].ciName, paint_arr[testnum].marketingName, paint_arr[testnum].manufacturer);
     printf("code:%i\n tran:%i\n sta:%i\n VR:%i\n", paint_arr[testnum].code, paint_arr[testnum].transparency, paint_arr[testnum].staining, paint_arr[testnum].valueRange);
     printf("gr:%i\n bl:%i\n di:%i\n", paint_arr[testnum].granulating, paint_arr[testnum].blossom, paint_arr[testnum].diffusion);
     printf("HA:%i\n HS:%i\n LF:%i\n", paint_arr[testnum].hueAngle, paint_arr[testnum].hueShift, paint_arr[testnum].lightfast);
-
 
 
     // erics tests
