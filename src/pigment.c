@@ -117,6 +117,8 @@ int loadPaintData( char* filename, paint_t* pArray, int* n){
     FILE* fd = fopen(filename, "r");
     if(fd == NULL){
         printf("Invalid File\n");
+        //close file and return failure
+        fclose(fd);
         return 1;
     }
 
@@ -135,33 +137,48 @@ int loadPaintData( char* filename, paint_t* pArray, int* n){
         //token through line to collect each data point of struct
         token = strtok(line, ",");
         strcpy(pArray[i].ciName, token);
+
         token = strtok(NULL, ",");
         strcpy(pArray[i].marketingName, token);
+
         token = strtok(NULL, ",");
         strcpy(pArray[i].manufacturer, token);
+
         token = strtok(NULL, ",");
         pArray[i].code = atoi(token);
+
         token = strtok(NULL, ",");
         pArray[i].transparency = atoi(token);
+
         token = strtok(NULL, ",");
         pArray[i].staining = atoi(token);
+
         token = strtok(NULL, ",");
         pArray[i].valueRange = atoi(token);
+
         token = strtok(NULL, ",");
         pArray[i].granulating = atoi(token);
+
         token = strtok(NULL, ",");
         pArray[i].blossom = atoi(token);
+
         token = strtok(NULL, ",");
         pArray[i].diffusion = atoi(token);
+
         token = strtok(NULL, ",");
         pArray[i].hueAngle = atoi(token);
+
         token = strtok(NULL, ",");
         pArray[i].hueShift = atoi(token);
+
         //last input has 2 values, last value after '/' is desired value for lightfast
         token = strtok(NULL, "/");
         token = strtok(NULL, "\n");
         pArray[i].lightfast = atoi(token);
         i++;
     }
+
+    //close file and return success
+    fclose(fd);
     return 0;
 }

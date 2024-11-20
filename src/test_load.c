@@ -25,13 +25,14 @@ int main(void){
         exit(EXIT_FAILURE);
     }
 
-    //int testnum = 3;
-    int testnum = 8;
-    printf("testing lines in array:\n");
-    printf("ci:%s, Mn:%s, man:%s", paint_arr[testnum].ciName, paint_arr[testnum].marketingName, paint_arr[testnum].manufacturer);
-    printf(" ,code:%i ,tran:%i, sta:%i, VR:%i", paint_arr[testnum].code, paint_arr[testnum].transparency, paint_arr[testnum].staining, paint_arr[testnum].valueRange);
-    printf(" ,gr:%i, bl:%i, di:%i", paint_arr[testnum].granulating, paint_arr[testnum].blossom, paint_arr[testnum].diffusion);
-    printf(" ,HA:%i, HS:%i, LF:%i\n", paint_arr[testnum].hueAngle, paint_arr[testnum].hueShift, paint_arr[testnum].lightfast);
+    int testnum = 5;
+    
+    printf("Success. Loaded paints:\n");
+    printf("testing line %i in array:\n", testnum);
+    printf("ci:%s\n Mn:%s\n man:%s\n", paint_arr[testnum].ciName, paint_arr[testnum].marketingName, paint_arr[testnum].manufacturer);
+    printf("code:%i\n tran:%i\n sta:%i\n VR:%i\n", paint_arr[testnum].code, paint_arr[testnum].transparency, paint_arr[testnum].staining, paint_arr[testnum].valueRange);
+    printf("gr:%i\n bl:%i\n di:%i\n", paint_arr[testnum].granulating, paint_arr[testnum].blossom, paint_arr[testnum].diffusion);
+    printf("HA:%i\n HS:%i\n LF:%i\n", paint_arr[testnum].hueAngle, paint_arr[testnum].hueShift, paint_arr[testnum].lightfast);
 
 
 
