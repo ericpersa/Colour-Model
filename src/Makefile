@@ -15,8 +15,8 @@ test_load: test_load.o pigment.o
 
 .PHONY: clean package
 
-clean: test_load pigment
-	rm -f test_load pigment *.o
+clean: test_load 
+	rm -f test_load *.o
 
 package: *.c *.h makefile
 	tar -czvf cmpt201_project01_EP_JL.tar.gz *.c *.h makefile
