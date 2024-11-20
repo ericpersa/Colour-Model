@@ -15,7 +15,7 @@ int main(void){
     }
 
     //dynamically allocate paint array of structures
-    paint_t* paint_arr = malloc(sizeof(paint_t)*10);
+    paint_t* paint_arr = malloc(sizeof(paint_t));
     fclose(fd);
 
     // call paint function and check output
@@ -28,20 +28,23 @@ int main(void){
     int testnum = 0;
     // print 
     printf("Success. Loaded paints:\n");
-    printf("Paint %i\n:", testnum);
-    printf("CI Name: %s\n", paint_arr[testnum].ciName);
-    printf("Marketing name: %s\n", paint_arr[testnum].marketingName);
-    printf("Manufacturer: %s\n", paint_arr[testnum].manufacturer);
-    printf("code: %i\n", paint_arr[testnum].code);
-    printf("transparency: %i\n", paint_arr[testnum].transparency);
-    printf("staining: %i\n", paint_arr[testnum].staining);
-    printf("Value range: %i\n", paint_arr[testnum].valueRange);
-    printf("granulating: %i\n", paint_arr[testnum].granulating);
-    printf("blossom: %i\n", paint_arr[testnum].blossom);
-    printf("diffusion: %i\n", paint_arr[testnum].diffusion);
-    printf("Hue angle: %i\n", paint_arr[testnum].hueAngle);
-    printf("Hue shift: %i\n", paint_arr[testnum].hueShift);
-    printf("Lightfast: %i\n", paint_arr[testnum].lightfast);
+    for(; testnum < 2; testnum++){
+        printf("Paint %i:\n", testnum);
+        printf("    CI Name: %s \n", paint_arr[testnum].ciName);
+        printf("    Marketing name: %s\n", paint_arr[testnum].marketingName);
+        printf("    Manufacturer: %s\n", paint_arr[testnum].manufacturer);
+        printf("    code: %i\n", paint_arr[testnum].code);
+        printf("    transparency: %i\n", paint_arr[testnum].transparency);
+        printf("    staining: %i\n", paint_arr[testnum].staining);
+        printf("    Value range: %i\n", paint_arr[testnum].valueRange);
+        printf("    granulating: %i\n", paint_arr[testnum].granulating);
+        printf("    blossom: %i\n", paint_arr[testnum].blossom);
+        printf("    diffusion: %i\n", paint_arr[testnum].diffusion);
+        printf("    Hue angle: %i\n", paint_arr[testnum].hueAngle);
+        printf("    Hue shift: %i\n", paint_arr[testnum].hueShift);
+        printf("    Lightfast: %i\n", paint_arr[testnum].lightfast);
+    }
+
 
 
     // erics tests

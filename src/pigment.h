@@ -10,9 +10,9 @@ typedef struct pigment_t {
 } pigment_t;
 
 typedef struct paint_t{
-    char ciName[30];
-    char marketingName[30];
-    char manufacturer[30];
+    char ciName[50];
+    char marketingName[50];
+    char manufacturer[50];
     int code;
     int transparency;
     int staining;

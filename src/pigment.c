@@ -112,6 +112,7 @@ int loadPaintData( char* filename, paint_t* pArray, int* n){
     char line[300];
     char *token;
     int i =0;
+    int count=1;
 
     //open file and check if valid
     FILE* fd = fopen(filename, "r");
@@ -128,15 +129,22 @@ int loadPaintData( char* filename, paint_t* pArray, int* n){
     }
 
     //traverse through lines until reaching the end of file
-    while(fgets(line, 300, fd) != NULL){
-        if( i == *n){
-            *n = *n *2;
-            pArray = realloc(pArray, *n*sizeof(paint_t));
+    while(fgets(line, 400, fd) != NULL){
+        (*n)++;
+        if( i == count){
+            count = count*2;
+            pArray = realloc(pArray, count * sizeof(paint_t));
         }
+
+
+        char* svptr = NULL;
+        char* test = "test";
 
         //token through line to collect each data point of struct
         token = strtok(line, ",");
+        // printf("%s\n", token);
         strcpy(pArray[i].ciName, token);
+        // strcpy(pArray[i].ciName, test);
 
         token = strtok(NULL, ",");
         strcpy(pArray[i].marketingName, token);
