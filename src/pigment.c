@@ -100,13 +100,18 @@ pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n) {
 
 }
 
-int loadPaintData( char* filename, paint_t* pArray, int* n){
+paint_t* loadPaintData( char* filename, paint_t* pArray, int* n){
     /***
     purpose:
-
-    //input:
-
-    output:
+        read in data line by line from file of paints, taking each specified value and putting it 
+        into array of paint_t structs.
+    input:
+        filename: 
+            pointer to where the file containing paint values is stored
+        pArray:
+            Array containing paint_t structs for each paint from file
+        n:
+            number of paints that have been input into pArray
     ***/
 
     char line[300];
@@ -120,7 +125,7 @@ int loadPaintData( char* filename, paint_t* pArray, int* n){
         printf("Invalid File\n");
         //close file and return failure
         fclose(fd);
-        return 1;
+        return NULL;
     }
 
     //skip the first 12 lines as they are comments
@@ -136,15 +141,9 @@ int loadPaintData( char* filename, paint_t* pArray, int* n){
             pArray = realloc(pArray, count * sizeof(paint_t));
         }
 
-
-        char* svptr = NULL;
-        char* test = "test";
-
         //token through line to collect each data point of struct
         token = strtok(line, ",");
-        // printf("%s\n", token);
         strcpy(pArray[i].ciName, token);
-        // strcpy(pArray[i].ciName, test);
 
         token = strtok(NULL, ",");
         strcpy(pArray[i].marketingName, token);
@@ -153,7 +152,7 @@ int loadPaintData( char* filename, paint_t* pArray, int* n){
         strcpy(pArray[i].manufacturer, token);
 
         token = strtok(NULL, ",");
-        pArray[i].code = atoi(token);
+        strcpy(pArray[i].code, token);
 
         token = strtok(NULL, ",");
         pArray[i].transparency = atoi(token);
@@ -185,8 +184,7 @@ int loadPaintData( char* filename, paint_t* pArray, int* n){
         pArray[i].lightfast = atoi(token);
         i++;
     }
-
     //close file and return success
     fclose(fd);
-    return 0;
+    return pArray;
 }

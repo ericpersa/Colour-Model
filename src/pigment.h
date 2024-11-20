@@ -13,7 +13,7 @@ typedef struct paint_t{
     char ciName[50];
     char marketingName[50];
     char manufacturer[50];
-    int code;
+    char code[5];
     int transparency;
     int staining;
     int valueRange;
@@ -25,6 +25,6 @@ typedef struct paint_t{
     int lightfast;
 }paint_t;
 
-int loadPaintData( char* , paint_t* , int*);
+paint_t* loadPaintData( char* , paint_t* , int*);
 
 pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n);
