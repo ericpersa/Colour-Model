@@ -134,7 +134,7 @@ paint_t* loadPaintData( char* filename, paint_t* pArray, int* n){
     }
 
     //traverse through lines until reaching the end of file
-    while(fgets(line, 400, fd) != NULL){
+    while(fgets(line, 300, fd) != NULL){
         (*n)++;
         if( i == count){
             count = count*2;
