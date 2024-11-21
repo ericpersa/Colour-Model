@@ -205,8 +205,22 @@ paint_t* getPaintValue(paint* pp, int npp, char* name, gVlaue_t getType, int* ns
         nspp:
             pointer to the number of elements found that contain the same value as name
     ***/
+    
 
 
 
+}
+
+int printPaint(paint_t* pp, int i, int n){
+/***
+    purpose:
+        
+    input:
+        pp:
+            
+        i:
+
+        n:
+    ***/
 
 }
