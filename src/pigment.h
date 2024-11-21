@@ -1,3 +1,13 @@
+typedef enum {
+    hue,
+    value,
+    granulating,
+    transparent,
+    staining,
+    bloom,
+    lightfast
+} gRange_t;
+
 typedef struct pigment_t {
     char ciName[50];
     char pigmentName[50];
@@ -23,8 +33,10 @@ typedef struct paint_t{
     int hueAngle;
     int hueShift;
     int lightfast;
-}paint_t;
+} paint_t;
 
 paint_t* loadPaintData( char* , paint_t* , int*);
 
 pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n);
+
+paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp);
