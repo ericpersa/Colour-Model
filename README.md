@@ -2,6 +2,7 @@
 
 #COMPILATION
 
+# Milestone 1
 To compile and run the project:
 1. Ensure you have the necessary environment and dependencies installed:
     - A C compiler (e.g. GCC)
