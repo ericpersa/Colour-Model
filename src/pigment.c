@@ -36,17 +36,16 @@ pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n) {
     }
 
     while (fgets(line, sizeof(line), fp)) {
-        *n += 1;
         count_skip += 1;
         if (count_skip > 9) {
-            
+            *n += 1;
             // check if array is full, allocate 10 extra spots if it is.
             if (count_line >= capacity) {
                 capacity += 10;
                 pArray = realloc(pArray, sizeof(pigment_t) * capacity);
                 if (pArray == NULL) {
                     printf("Failed to allocate memory");
-                    exit(EXIT_FAILURE);
+                    return NULL;
                 }
             }
             // # pigments.dat: COLOR INDEX, PIGMENT NAME, J, C,aC,bC,HueAngle,Hue Purity,aHP,bHP
@@ -80,7 +79,7 @@ pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n) {
 
             token = strtok(NULL, ",");
             printf("huePurity: %s\n", token);
-            pArray[count_line].huePurity = atoi(token);
+            pArray[count_line].huePurity = atof(token);
 
             token = strtok(NULL, ",");
             printf("aHp: %s\n", token);

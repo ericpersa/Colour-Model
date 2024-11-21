@@ -76,6 +76,7 @@ int main(void){
 
     // free memory
     free(pigments);
+    pigments = NULL;
 
     exit(EXIT_SUCCESS);
 }
