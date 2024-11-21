@@ -31,17 +31,18 @@ Hue Purity - CIECAM hue purity, the ratio between the pigment chroma
 aHP - ab coordinates for pigment hue purity, scaled so that maximum possible hue purity equals 1.0
 bHP - ab coordinates for pigment hue purity, scaled so that maximum possible hue purity equals 1.0
 
+Source - https://www.handprint.com/HP/WCL/pigmt8.html 
 ##in paints.dat
-C.I.NAME
-MARKETING NAME
-Manufacturer
-Code - manufacterer (char)
-Tr - transparency (int)
-St - staining 
-VR - valueRange
-Gr - granulating 
-Bl - blossom
-Df - Diffusion
-HA - HueAngle
-HS - HueShift
-Lf - lightfast
+C.I.NAME - colour index name/number of paint 
+MARKETING NAME - name given to colour from the paint manufacterer
+Manufacturer - company that produces and sells the paint
+Code - manufacterer - an identifying number used by the manufacterer to differentiate products
+Tr - transparency - the amount of masking that occurs when paint is swatched overtop of a different coloured surface
+St - staining - the amount of lifting of paint particles from a surface that occurs after paint has dried 
+VR - valueRange - The lightness or darkness of the watercolor paint, as painted full strength on white watercolor paper
+Gr - granulating - visible or tractile texture caused by particle seperation after the paint has dried 
+Bl - blossom - amount of paint particles redissolved and moved by water after drying, adjustibility of particles
+Df - Diffusion - amount of movement by paint when swatched onto a pre-moistened surface 
+HA - HueAngle - a paint's masstone hue, as measured by the CIELAB a*b* plane
+HS - HueShift - shift in the paint's hue, undertone hue - masstone hue
+Lf - lightfast - measurement of the amount of discolouration that occurs when exposed to high intensity light for period of time
