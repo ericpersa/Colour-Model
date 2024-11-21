@@ -3,6 +3,7 @@
 #include <string.h>
 #include"pigment.h"
 
+
 pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n) {
     /*
     purpose: 
@@ -186,4 +187,26 @@ paint_t* loadPaintData( char* filename, paint_t* pArray, int* n){
     //close file and return success
     fclose(fd);
     return pArray;
+}
+
+paint_t* getPaintValue(paint* pp, int npp, char* name, gVlaue_t getType, int* nspp){
+/***
+    purpose:
+        
+    input:
+        pp:
+            pointer to loaded array of paint data
+        npp
+            number of elements within the paint data array
+        name:
+            name that the code is looking to match within the array
+        getType:
+            enumeration of ciName, marketingName, manufacturer
+        nspp:
+            pointer to the number of elements found that contain the same value as name
+    ***/
+
+
+
+
 }
