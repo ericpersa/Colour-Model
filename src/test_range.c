@@ -25,12 +25,13 @@ int main(void) {
     }
 
     // testing good values and expecting a return
+    paint_t* result_arr;
     int nspp = 0;
     float rmin_good = 0.4;
     float rmax_good = 1.0;
-    gRange_t checkType = "hue";
+    gRange_t checkType = hue;
 
-    paint_t* getPaintRange(paint_arr, paint_count, rmin_good, rmax_good, getType, &nspp)
+    result_arr = getPaintRange(paint_arr, paint_count, rmin_good, rmax_good, checkType, &nspp);
 
 
     free(paint_arr);

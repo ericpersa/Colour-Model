@@ -8,6 +8,9 @@ CFLAGS = -Wall -std=c11
 test_load: test_load.o pigment.o
 	$(CC) $(CFLAGS) $^ -o $@
 
+test_range: test_range.o pigment.o
+	$(CC) $(CFLAGS) $^ -o $@
+
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $< $(LDFLAGS)
 
@@ -15,7 +18,7 @@ test_load: test_load.o pigment.o
 
 .PHONY: clean package
 
-clean: test_load 
+clean:
 	rm -f test_load *.o
 
 package: *.c *.h makefile
