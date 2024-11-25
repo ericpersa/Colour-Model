@@ -29,9 +29,11 @@ int main(void) {
     float rmin_good = 0.4;
     float rmax_good = 1.0;
     gRange_t checkType = hue;
+    int return_val;
 
     result_arr = getPaintRange(paint_arr, paint_count, rmin_good, rmax_good, checkType, &nspp);
 
+    return_val = printPigment(result_arr, (-1), nspp);
 
     free(paint_arr);
     paint_arr = NULL;

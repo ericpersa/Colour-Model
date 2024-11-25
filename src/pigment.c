@@ -53,6 +53,90 @@ int printPigment(pigment_t* pp, int i, int n) {
 }
 
 paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp ) {
+    char identifier[20];
+    int actmin;
+    int actmax;
+    // switch case statement to get the property we are looking for
+    switch(getType) {
+        case 0:
+            actmin = 0;
+            actmax = 359 * rmax;
+            break;
+        case 1:
+            actmin = 35 * rmin;
+            actmax = 68 * rmax;
+            break;
+        case 2:
+            actmin = 0 * rmin;
+            actmax = 2 * rmax;
+            break;
+        case 3:
+            actmin = 0 * rmin;
+            actmax = 4 * rmax;
+            break;
+        case 4:
+            actmin = 0 * rmin;
+            actmax = 4 * rmax;
+            break;
+        case 5:
+            actmin = 0 * rmin;
+            actmax = 4 * rmax;
+            break;
+        case 6:
+            actmin = 1 * rmin;
+            actmax = 8 * rmax;
+            break;
+    }
+
+    //dynamically allocate paint array of structures
+    int capacity = 10;
+    paint_t* paint_arr = malloc(capacity*sizeof(paint_t));
+    if(paint_arr == NULL){
+        return(NULL);
+    }
+
+    for (int i = 0; i < npp;  i++) {
+        // check if range of values falls into normalized range
+        int value = 0;
+        switch (getType) {
+            case 0:
+                value = pp[i].hueAngle;
+                break;
+            case 1:
+                value = pp[i].valueRange;
+                break;
+            case 2:
+                value = pp[i].granulating;
+                break;
+            case 3:
+                value = pp[i].transparency;
+                break;
+            case 4:
+                value = pp[i].staining;
+                break;
+            case 5:
+                value = pp[i].blossom;
+                break;
+            case 6:
+                value = pp[i].lightfast;
+                break;
+
+            if ((value >= actmin) && (value <= actmax)) {
+                // the property we are checking falls within the specified range, append to dynamic list
+                *nspp += 1;
+                if ((*nspp) > capacity) {
+                    capacity += 5;
+                    // reallocate as our array is full
+                    paint_arr = realloc(paint_arr, (sizeof(paint_t) * capacity));
+                }
+                // add to memory at [nspp - 1]
+                paint_arr[*nspp-1] = pp[i]; 
+            }
+        return paint_arr;
+    }
+
+            
+    }
     return pp;
 }
 
