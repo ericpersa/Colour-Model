@@ -3,6 +3,10 @@
 #include <string.h>
 #include"pigment.h"
 
+paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp ) {
+    
+}
+
 pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n) {
     /*
     purpose: 
