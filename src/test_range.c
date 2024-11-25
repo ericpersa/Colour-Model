@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 int main(void) {
-    //Jenna's test
     int paint_count = 0;
 
     //open file

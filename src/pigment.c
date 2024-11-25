@@ -3,6 +3,34 @@
 #include <string.h>
 #include"pigment.h"
 
+int printPigment(pigment_t* pp, int i, int n) {
+    // question 1 milestone 2
+    /*
+    purpose: 
+        prints pigments within an array in a formatted way
+    input:
+    pp
+        pointer pointing to an array of pigment structures
+    n:
+        the size of pp
+    i
+        index of the array to print. -1 means print whole array.
+    */
+
+    // error check for out of bounds index.
+    if (i < -1) || (i > n-1) {
+        return 1;
+
+    // we have a correct range, now we can check if we have -1 or an index.
+    if (i == -1) {
+        // i = -1, print whole array
+        for (int i = 0; i <= n-1, i++) {
+            // first paint struct is *(pp + 0)
+            printf("--------------");
+            printf
+        }
+}
+
 paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp ) {
     
 }
