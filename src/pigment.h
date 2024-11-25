@@ -42,3 +42,5 @@ pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n);
 paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp);
 
 int printPigment(pigment_t* pp, int i, int n); // question 1 of milestone 2
+
+int printPaint(paint_t* pp, int i, int n); // question 2 of milestone 2

@@ -19,7 +19,7 @@ test_range: test_range.o pigment.o
 .PHONY: clean package
 
 clean:
-	rm -f test_load *.o
+	rm -f test_load test_range *.o
 
 package: *.c *.h makefile
 	tar -czvf cmpt201_project01_EP_JL.tar.gz *.c *.h makefile

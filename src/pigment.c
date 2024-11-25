@@ -25,35 +25,92 @@ int printPigment(pigment_t* pp, int i, int n) {
     // we have a correct range, now we can check if we have -1 or an index.
     if (i == -1) {
         // i = -1, print whole array
-        for (int i = 0; i <= n-1; i++) {
+        for (int j = 0; j <= n-1; j++) {
             // first paint struct is *(pp + 0)
-            printf("--------------");
-            printf("ciName        : %s", pp[i].ciName);
-            printf("pigmentName   : %s", pp[i].pigmentName);
-            printf("value         : %s", pp[i].value);
-            printf("chroma        : %s", pp[i].chroma);
-            printf("(a,b)         : (%s)", pp[i].abValue);
-            printf("hue [degrees] : %s", pp[i].hueAngle);
-            printf("huePurity     : %s", pp[i].huePurity);
-            printf("(ahp,ahp)     : %s", pp[i].abHp);
+            printf("--------------\n");
+            printf("ciName        : %s\n", pp[j].ciName);
+            printf("pigmentName   : %s\n", pp[j].pigmentName);
+            printf("value         : %d\n", pp[j].value);
+            printf("chroma        : %d\n", pp[j].chroma);
+            printf("(a,b)         : %ls\n", pp[j].abValue);
+            printf("hue [degrees] : %d\n", pp[j].hueAngle);
+            printf("huePurity     : %f\n", pp[j].huePurity);
+            printf("(ahp,bhp)     : %f\n", *(pp[j].abHp));
         }
         return 0;
     }
     // print with index i
-    printf("--------------");
+    printf("--------------\n");
     printf("ciName        : %s", pp[i].ciName);
     printf("pigmentName   : %s", pp[i].pigmentName);
-    printf("value         : %s", pp[i].value);
-    printf("chroma        : %s", pp[i].chroma);
-    printf("(a,b)         : (%s)", pp[i].abValue);
-    printf("hue [degrees] : %s", pp[i].hueAngle);
-    printf("huePurity     : %s", pp[i].huePurity);
-    printf("(ahp,ahp)     : %s", pp[i].abHp);
+    printf("value         : %d", pp[i].value);
+    printf("chroma        : %d", pp[i].chroma);
+    printf("(a,b)         : (%ls)", pp[i].abValue);
+    printf("hue [degrees] : %d", pp[i].hueAngle);
+    printf("huePurity     : %f", pp[i].huePurity);
+    printf("(ahp,bhp)     : %f", *(pp[i].abHp));
+    return 0;
+}
+
+int printPaint(paint_t* pp, int i, int n) {
+    // question 1 milestone 2
+    /*
+    purpose: 
+        prints paints within an array in a formatted way
+    input:
+    pp
+        pointer pointing to an array of paint structures
+    n:
+        the size of pp
+    i
+        index of the array to print. -1 means print whole array.
+    */
+
+    // error check for out of bounds index.
+    if ((i < -1) || (i > n-1)) {
+        return 1;
+    }
+
+    // we have a correct range, now we can check if we have -1 or an index.
+    if (i == -1) {
+        // i = -1, print whole array
+        for (int j = 0; j <= n-1; j++) {
+            // first paint struct is *(pp + 0)
+            printf("--------------\n");
+            printf("ciName       : %s\n", pp[j].ciName);
+            printf("marketingName: %s\n", pp[j].marketingName);
+            printf("manufacturer : %s\n", pp[j].manufacturer);
+            printf("transparency : %d\n", pp[j].transparency);
+            printf("staining     : %d\n", pp[j].staining);
+            printf("valueRange   : %d\n", pp[j].valueRange);
+            printf("granulating  : %d\n", pp[j].granulating);
+            printf("blossom      : %d\n", pp[j].blossom);
+            printf("diffusion    : %d\n", pp[j].diffusion);
+            printf("hueAngle     : %d\n", pp[j].hueAngle);
+            printf("hueShift     : %d\n", pp[j].hueShift);
+            printf("lightfast    : %d\n", pp[j].lightfast);
+            return 0;
+        }
+    }
+    // print with index i
+    printf("--------------\n");
+    printf("ciName       : %s\n", pp[i].ciName);
+    printf("marketingName: %s\n", pp[i].marketingName);
+    printf("manufacturer : %s\n", pp[i].manufacturer);
+    printf("transparency : %d\n", pp[i].transparency);
+    printf("staining     : %d\n", pp[i].staining);
+    printf("valueRange   : %d\n", pp[i].valueRange);
+    printf("granulating  : %d\n", pp[i].granulating);
+    printf("blossom      : %d\n", pp[i].blossom);
+    printf("diffusion    : %d\n", pp[i].diffusion);
+    printf("hueAngle     : %d\n", pp[i].hueAngle);
+    printf("hueShift     : %d\n", pp[i].hueShift);
+    printf("lightfast    : %d\n", pp[i].lightfast);
     return 0;
 }
 
 paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp ) {
-    char identifier[20];
+    *nspp = 0;
     int actmin;
     int actmax;
     // switch case statement to get the property we are looking for
@@ -91,7 +148,7 @@ paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t ge
     //dynamically allocate paint array of structures
     int capacity = 10;
     paint_t* paint_arr = malloc(capacity*sizeof(paint_t));
-    if(paint_arr == NULL){
+    if (paint_arr == NULL){
         return(NULL);
     }
 
@@ -99,6 +156,8 @@ paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t ge
         // check if range of values falls into normalized range
         int value = 0;
         switch (getType) {
+            default:
+                return NULL;
             case 0:
                 value = pp[i].hueAngle;
                 break;
@@ -120,24 +179,25 @@ paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t ge
             case 6:
                 value = pp[i].lightfast;
                 break;
+        }   
 
-            if ((value >= actmin) && (value <= actmax)) {
-                // the property we are checking falls within the specified range, append to dynamic list
-                *nspp += 1;
-                if ((*nspp) > capacity) {
-                    capacity += 5;
-                    // reallocate as our array is full
-                    paint_arr = realloc(paint_arr, (sizeof(paint_t) * capacity));
+        if ((value >= actmin) && (value <= actmax)) {
+            // the property we are checking falls within the specified range, append to dynamic list
+            *nspp += 1;
+            if ((*nspp) > capacity) {
+                capacity += 5;
+                // reallocate as our array is full
+                paint_arr = realloc(paint_arr, (sizeof(paint_t) * capacity));
+                if (paint_arr == NULL) {
+                    free(paint_arr);
+                    return(NULL);
                 }
-                // add to memory at [nspp - 1]
-                paint_arr[*nspp-1] = pp[i]; 
-            }
-        return paint_arr;
+            }   
+            // add to memory at [nspp - 1]
+            paint_arr[*nspp-1] = pp[i]; 
+        }      
     }
-
-            
-    }
-    return pp;
+    return paint_arr;
 }
 
 pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n) {
