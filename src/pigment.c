@@ -50,11 +50,10 @@ int printPigment(pigment_t* pp, int i, int n) {
     printf("huePurity     : %s", pp[i].huePurity);
     printf("(ahp,ahp)     : %s", pp[i].abHp);
     return 0;
-
 }
 
 paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp ) {
-return pp;    
+    return pp;
 }
 
 pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n) {
