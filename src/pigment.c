@@ -18,21 +18,43 @@ int printPigment(pigment_t* pp, int i, int n) {
     */
 
     // error check for out of bounds index.
-    if (i < -1) || (i > n-1) {
+    if ((i < -1) || (i > n-1)) {
         return 1;
+    }
 
     // we have a correct range, now we can check if we have -1 or an index.
     if (i == -1) {
         // i = -1, print whole array
-        for (int i = 0; i <= n-1, i++) {
+        for (int i = 0; i <= n-1; i++) {
             // first paint struct is *(pp + 0)
             printf("--------------");
-            printf
+            printf("ciName        : %s", pp[i].ciName);
+            printf("pigmentName   : %s", pp[i].pigmentName);
+            printf("value         : %s", pp[i].value);
+            printf("chroma        : %s", pp[i].chroma);
+            printf("(a,b)         : (%s)", pp[i].abValue);
+            printf("hue [degrees] : %s", pp[i].hueAngle);
+            printf("huePurity     : %s", pp[i].huePurity);
+            printf("(ahp,ahp)     : %s", pp[i].abHp);
         }
+        return 0;
+    }
+    // print with index i
+    printf("--------------");
+    printf("ciName        : %s", pp[i].ciName);
+    printf("pigmentName   : %s", pp[i].pigmentName);
+    printf("value         : %s", pp[i].value);
+    printf("chroma        : %s", pp[i].chroma);
+    printf("(a,b)         : (%s)", pp[i].abValue);
+    printf("hue [degrees] : %s", pp[i].hueAngle);
+    printf("huePurity     : %s", pp[i].huePurity);
+    printf("(ahp,ahp)     : %s", pp[i].abHp);
+    return 0;
+
 }
 
 paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp ) {
-    
+return pp;    
 }
 
 pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n) {
