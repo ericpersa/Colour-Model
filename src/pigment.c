@@ -284,6 +284,6 @@ paint_t* getPaintValue(paint* pp, int npp, char* name, gValue_t getType, int* *n
         return (NULL);
     }
     //return new sub array 
-    return(spa);
+    return(&spa);
 }
 
