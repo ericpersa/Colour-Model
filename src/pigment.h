@@ -29,6 +29,6 @@ typedef enum{ciName, marketingName, manufacturer}gValue_t;
 
 paint_t* loadPaintData( char* , paint_t* , int*);
 
-paint_t* (paint*, int, char*, gVlaue_t, int*);
+paint_t* getPaintValue(paint_t*, int, char*, gValue_t, int*);
 
 pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n);

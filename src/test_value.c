@@ -1,3 +1,6 @@
+#include "pigment.h"
+#include <stdio.h>
+
 // test value
 int main(void){
     // load data into array
@@ -19,7 +22,17 @@ int main(void){
         return(1);
     }
 
+    //test values for getPaintValue
+    int *npp = *paint_count;
+    char[] name = "cerulean blue";
+    gValue_t type = MARKETINGNAME;
+    int* nspp = 0;
+
+
+
     //call get paint value function
+    paint_t* spa = getPaintValue(pp,npp,name,type,nspp);
+
 
 
 }
