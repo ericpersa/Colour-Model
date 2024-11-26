@@ -205,7 +205,7 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
         nspp:
             pointer to the number of elements found that contain the same value as name
     ***/
-    printf("IN FUNCTION");
+    printf("IN FUNCTION\n");
 
     //create new array of structures for structs with proper prerequisites
     paint_t* spa = malloc(sizeof(paint_t));
@@ -215,20 +215,19 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
         exit(EXIT_FAILURE);
     }
 
-
-
     int size = 1;
 
-    //
-    //make name not case sensitive
-    //
-    printf("MALLOC");
+    printf("MALLOC\n");
     //if getType is ciName (0 because of enum)
     if(getType == 0){
         //traverse through array of apaints to look for the same name in column getType
         for(int i =0; i<npp; i++){
+            //make 
+
+
             // if the name is the same copy that structure into another array and increase number of nspp
-            if( strcmp(pp[i].ciName, name) ==0){
+            //use strcasecmp to compare and ignore case 
+            if( strcasecmp(pp[i].ciName, name) ==0){
                 if( *nspp == size){
                     size = size *2;
                     spa = realloc(spa, size*sizeof(paint_t));
@@ -253,7 +252,7 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
     //if getType is marketingName (1 because of enum)
     else if(getType == 1){
         for(int i =0; i<npp; i++){
-            if( strcmp(pp[i].marketingName, name) ==0){
+            if( strcasecmp(pp[i].marketingName, name) ==0){
                 if( *nspp == size){
                     size = size *2;
                     spa = realloc(spa, size*sizeof(paint_t));
@@ -278,7 +277,7 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
     //if getType is manufacterer (2 because of enum)
     else if(getType == 2){
         for(int i =0; i<npp; i++){
-            if( strcmp(pp[i].manufacturer, name) ==0){
+            if( strcasecmp(pp[i].manufacturer, name) ==0){
                 if( *nspp == size){
                     size = size *2;
                     spa = realloc(spa, size*sizeof(paint_t));
@@ -304,7 +303,7 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
         //if the type is not input correctly return error
         return (NULL);
     }
-    printf("DONE TYPE CHECK");
+    printf("DONE TYPE CHECK\n");
     //return new sub array 
     return(spa);
 }
