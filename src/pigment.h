@@ -1,11 +1,11 @@
 typedef enum {
-    hue,
-    value,
-    granulating,
-    transparent,
-    staining,
-    bloom,
-    lightfast
+    HUE,
+    VALUE,
+    GRANULATING,
+    TRANSPARENT,
+    STAINING,
+    BLOOM,
+    LIGHTFAST
 } gRange_t;
 
 typedef struct pigment_t {

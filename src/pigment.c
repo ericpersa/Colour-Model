@@ -110,9 +110,15 @@ int printPaint(paint_t* pp, int i, int n) {
 }
 
 paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp ) {
+    // error checking for rmin and max, must be between 0 and 1 inclusive
+    if (((rmin < 0) || (rmin >= 1)) || ((rmax > 1) || (rmax <= 0))) {
+        return NULL;
+    }
+    
     *nspp = 0;
     int actmin;
     int actmax;
+
     // switch case statement to get the property we are looking for
     switch(getType) {
         case 0:
@@ -194,7 +200,7 @@ paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t ge
                 }
             }   
             // add to memory at [nspp - 1]
-            paint_arr[*nspp-1] = pp[i]; 
+            paint_arr[*nspp-1] = pp[i]; // -1 because we increment nspp for every iteration
         }      
     }
     return paint_arr;

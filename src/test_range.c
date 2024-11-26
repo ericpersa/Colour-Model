@@ -28,14 +28,41 @@ int main(void) {
     int nspp = 0;
     float rmin_good = 0.4;
     float rmax_good = 1.0;
-    gRange_t checkType = hue;
+    gRange_t checkType = HUE;
 
+    // testing getPaintRange
     result_arr = getPaintRange(paint_arr, paint_count, rmin_good, rmax_good, checkType, &nspp);
-
+    if (result_arr == NULL) {
+        printf("Error with getPaintRange: returned NULL\n");
+        return 1;
+    }
     int err = printPaint(result_arr, -1, nspp);
+    if (err == 1) {
+        printf("Error printing paints. printPaint returned 1\n");
+        return 1;
+    }
 
-    free(paint_arr);
+
+    int rmin_bad = -3;
+    int rmax_bad = 1.1111;
+    paint_t* bad_arr;
+    gRange_t checkType_2 = GRANULATING;
+    bad_arr = getPaintRange(paint_arr, paint_count, rmin_bad, rmax_bad, checkType_2, &nspp);
+    if (bad_arr == NULL) {
+        printf("Error with getPaintRange: returned NULL\n");
+        return 1;
+    }
+    int err_2 = printPaint(bad_arr, -1, nspp);
+    if (err_2 == 1) {
+        printf("Error printing paints. printPaint returned 1\n");
+        return 1;
+    }
+
+
+
     free(result_arr); 
+    free(paint_arr);
+    free(bad_arr);
     paint_arr = NULL;
     result_arr = NULL;
 }
