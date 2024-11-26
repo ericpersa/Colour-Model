@@ -209,6 +209,14 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
 
     //create new array of structures for structs with proper prerequisites
     paint_t* spa = malloc(sizeof(paint_t));
+
+    if (spa == NULL) {
+        printf("Failed to allocate memory");
+        exit(EXIT_FAILURE);
+    }
+
+
+
     int size = 1;
 
     //

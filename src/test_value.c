@@ -29,17 +29,18 @@ int main(void){
     char name[] = "cerulean blue";
     gValue_t type;
     type = MARKETINGNAME;
-    int* nspp = 0;
+    int nspp = 0;
 
     printf("DECLARE VAR\n\n");
     //call get paint value function
-    paint_t* spa = getPaintValue(pp, npp, name, type, nspp);
+    paint_t* spa;
+    spa = getPaintValue(pp, npp, name, type, &nspp);
     printf("exit get val\n\n");
 
-    for(int i =0; i<*nspp; i++){
-        printf("---------");
-        printf("%s",spa[i].manufacturer);
-        printf("%s",spa[i].ciName);
+    for(int i =0; i<nspp; i++){
+        printf("---------\n");
+        printf("%s\n",spa[i].manufacturer);
+        printf("%s\n",spa[i].ciName);
     }
 
     free(pp);
