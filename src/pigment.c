@@ -238,7 +238,7 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
                  spa[*nspp].hueAngle = pp[i].hueAngle;
                  spa[*nspp].hueShift = pp[i].hueShift;
                  spa[*nspp].lightfast = pp[i].lightfast;
-                 *nspp++;
+                 (*nspp)++;
             }
         }
     }
@@ -263,7 +263,7 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
                  spa[*nspp].hueAngle = pp[i].hueAngle;
                  spa[*nspp].hueShift = pp[i].hueShift;
                  spa[*nspp].lightfast = pp[i].lightfast;
-                 *nspp ++;
+                 (*nspp)++;
             }
         }
     }
@@ -288,7 +288,7 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
                  spa[*nspp].hueAngle = pp[i].hueAngle;
                  spa[*nspp].hueShift = pp[i].hueShift;
                  spa[*nspp].lightfast = pp[i].lightfast;
-                 *nspp++;
+                 (*nspp)++;
             }
         }
     }

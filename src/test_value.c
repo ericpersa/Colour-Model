@@ -27,7 +27,7 @@ int main(void){
     //test values for getPaintValue
     int npp = paint_count;
     char name[] = "cerulean blue";
-    enum gValue_t type;
+    gValue_t type;
     type = MARKETINGNAME;
     int* nspp = 0;
 
