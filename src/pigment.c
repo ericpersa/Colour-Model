@@ -287,16 +287,3 @@ paint_t* getPaintValue(paint* pp, int npp, char* name, gValue_t getType, int* *n
     return(spa);
 }
 
-int printPaint(paint_t* pp, int i, int n){
-/***
-    purpose:
-        
-    input:
-        pp:
-            
-        i:
-
-        n:
-    ***/
-
-}
