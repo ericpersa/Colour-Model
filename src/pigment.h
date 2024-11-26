@@ -25,7 +25,7 @@ typedef struct paint_t{
     int lightfast;
 }paint_t;
 
-typedef enum{ciName, marketingName, manufacturer}gValue_t;
+typedef enum gValue_t{CINAME, MARKETINGNAME, MANUFACTURER}gValue_t;
 
 paint_t* loadPaintData( char* , paint_t* , int*);
 
