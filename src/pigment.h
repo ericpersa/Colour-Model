@@ -35,7 +35,11 @@ typedef struct paint_t{
     int lightfast;
 } paint_t;
 
+typedef enum {CINAME, MARKETINGNAME, MANUFACTURER} gValue_t;
+
 paint_t* loadPaintData( char* , paint_t* , int*);
+
+paint_t* getPaintValue(paint_t*, int, char*, gValue_t, int*);
 
 pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n);
 
@@ -44,3 +48,5 @@ paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t ge
 int printPigment(pigment_t* pp, int i, int n); // question 1 of milestone 2
 
 int printPaint(paint_t* pp, int i, int n); // question 2 of milestone 2
+
+paint_t* getPaintValue(paint_t*, int, char*, gValue_t, int*);

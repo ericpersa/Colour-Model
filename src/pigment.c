@@ -390,3 +390,119 @@ paint_t* loadPaintData( char* filename, paint_t* pArray, int* n){
     fclose(fd);
     return pArray;
 }
+
+paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* nspp){
+/***
+    purpose:
+        
+    input:
+        pp:
+            pointer to loaded array of paint data
+        npp
+            number of elements within the paint data array
+        name:
+            name that the code is looking to match within the array
+        getType:
+            enumeration of ciName, marketingName, manufacturer
+        nspp:
+            pointer to the number of elements found that contain the same value as name
+    ***/
+
+    //create new array of structures for structs with proper prerequisites
+    paint_t* spa = malloc(sizeof(paint_t));
+    if (spa == NULL) {
+        printf("Failed to allocate memory");
+        exit(EXIT_FAILURE);
+    }
+
+    int size = 1;
+
+    //if getType is ciName (0 because of enum)
+    if(getType == 0){
+        //traverse through array of apaints to look for the same name in column getType
+        for(int i =0; i<npp; i++){
+            //make 
+
+
+            // if the name is the same copy that structure into another array and increase number of nspp
+            //use strcasecmp to compare and ignore case 
+            if( strcasecmp(pp[i].ciName, name) ==0){
+                if( *nspp == size){
+                    size = size *2;
+                    spa = realloc(spa, size*sizeof(paint_t));
+                 }
+                 strcpy(spa[*nspp].ciName, pp[i].ciName);
+                 strcpy(spa[*nspp].marketingName, pp[i].marketingName);
+                 strcpy(spa[*nspp].manufacturer, pp[i].manufacturer);
+                 strcpy(spa[*nspp].code, pp[i].code);
+                 spa[*nspp].transparency = pp[i].transparency;
+                 spa[*nspp].staining = pp[i].transparency;
+                 spa[*nspp].valueRange = pp[i].valueRange;
+                 spa[*nspp].granulating = pp[i].granulating;
+                 spa[*nspp].blossom = pp[i].blossom;
+                 spa[*nspp].diffusion = pp[i].diffusion;
+                 spa[*nspp].hueAngle = pp[i].hueAngle;
+                 spa[*nspp].hueShift = pp[i].hueShift;
+                 spa[*nspp].lightfast = pp[i].lightfast;
+                 (*nspp)++;
+            }
+        }
+    }
+    //if getType is marketingName (1 because of enum)
+    else if(getType == 1){
+        for(int i =0; i<npp; i++){
+            if( strcasecmp(pp[i].marketingName, name) ==0){
+                if( *nspp == size){
+                    size = size *2;
+                    spa = realloc(spa, size*sizeof(paint_t));
+                 }
+                 strcpy(spa[*nspp].ciName, pp[i].ciName);
+                 strcpy(spa[*nspp].marketingName, pp[i].marketingName);
+                 strcpy(spa[*nspp].manufacturer, pp[i].manufacturer);
+                 strcpy(spa[*nspp].code, pp[i].code);
+                 spa[*nspp].transparency = pp[i].transparency;
+                 spa[*nspp].staining = pp[i].transparency;
+                 spa[*nspp].valueRange = pp[i].valueRange;
+                 spa[*nspp].granulating = pp[i].granulating;
+                 spa[*nspp].blossom = pp[i].blossom;
+                 spa[*nspp].diffusion = pp[i].diffusion;
+                 spa[*nspp].hueAngle = pp[i].hueAngle;
+                 spa[*nspp].hueShift = pp[i].hueShift;
+                 spa[*nspp].lightfast = pp[i].lightfast;
+                 (*nspp)++;
+            }
+        }
+    }
+    //if getType is manufacterer (2 because of enum)
+    else if(getType == 2){
+        for(int i =0; i<npp; i++){
+            if( strcasecmp(pp[i].manufacturer, name) ==0){
+                if( *nspp == size){
+                    size = size *2;
+                    spa = realloc(spa, size*sizeof(paint_t));
+                 }
+                 strcpy(spa[*nspp].ciName, pp[i].ciName);
+                 strcpy(spa[*nspp].marketingName, pp[i].marketingName);
+                 strcpy(spa[*nspp].manufacturer, pp[i].manufacturer);
+                 strcpy(spa[*nspp].code, pp[i].code);
+                 spa[*nspp].transparency = pp[i].transparency;
+                 spa[*nspp].staining = pp[i].transparency;
+                 spa[*nspp].valueRange = pp[i].valueRange;
+                 spa[*nspp].granulating = pp[i].granulating;
+                 spa[*nspp].blossom = pp[i].blossom;
+                 spa[*nspp].diffusion = pp[i].diffusion;
+                 spa[*nspp].hueAngle = pp[i].hueAngle;
+                 spa[*nspp].hueShift = pp[i].hueShift;
+                 spa[*nspp].lightfast = pp[i].lightfast;
+                 (*nspp)++;
+            }
+        }
+    }
+    else{
+        //if the type is not input correctly return error
+        return (NULL);
+    }
+    //return new sub array 
+    return(spa);
+}
+
