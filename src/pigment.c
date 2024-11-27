@@ -90,8 +90,8 @@ int printPaint(paint_t* pp, int i, int n) {
             printf("hueAngle     : %d\n", pp[j].hueAngle);
             printf("hueShift     : %d\n", pp[j].hueShift);
             printf("lightfast    : %d\n", pp[j].lightfast);
-            return 0;
         }
+        return 0;
     }
     // print with index i
     printf("--------------\n");
@@ -112,15 +112,16 @@ int printPaint(paint_t* pp, int i, int n) {
 
 paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp ) {
     // error checking for rmin and max, must be between 0 and 1 inclusive
-    if (((rmin < 0) || (rmin >= 1)) || ((rmax > 1) || (rmax <= 0))) {
+    if (((rmin < 0) || (rmin > 1)) || ((rmax > 1) || (rmax < 0)) || (rmin > rmax)) {
         return NULL;
     }
     
     *nspp = 0;
-    int actmin;
-    int actmax;
+    float actmin = 0.0;
+    float actmax = 0.0;
 
     // switch case statement to get the property we are looking for
+
     switch(getType) {
         case 0:
             actmin = 0;
@@ -158,7 +159,6 @@ paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t ge
     if (paint_arr == NULL){
         return(NULL);
     }
-
     for (int i = 0; i < npp;  i++) {
         // check if range of values falls into normalized range
         int value = 0;

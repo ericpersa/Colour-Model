@@ -26,10 +26,10 @@ int main(void) {
     // testing good values and expecting a return
     paint_t* result_arr;
     int nspp = 0;
-    float rmin_good = 0.4;
+    float rmin_good = 0.1;
     float rmax_good = 1.0;
     gRange_t checkType = HUE;
-
+    
     // testing getPaintRange
     result_arr = getPaintRange(paint_arr, paint_count, rmin_good, rmax_good, checkType, &nspp);
     if (result_arr == NULL) {
@@ -42,7 +42,8 @@ int main(void) {
         return 1;
     }
 
-
+    printf("\n");
+    printf("testing error.");
     int rmin_bad = -3;
     int rmax_bad = 1.1111;
     paint_t* bad_arr;
