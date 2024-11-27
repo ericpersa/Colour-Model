@@ -13,7 +13,6 @@ int main(void){
         fclose(fd);
         return 1;
     }
-    printf("FILE OPEN\n\n");
 
     //dynamically allocate paint array of structures
     paint_t* pp = malloc(sizeof(paint_t));
@@ -24,25 +23,38 @@ int main(void){
         printf("Error loading paint_t\n");
         return(1);
     }
-    printf("data loaded\n\n");
+
     //test values for getPaintValue
     int npp = paint_count;
-    char name[] = "cerulean blue";
     gValue_t type;
-    type = MARKETINGNAME;
     int nspp = 0;
+    //test case 1
+    //char name[] = "cerulean blue";
+    // type = MARKETINGNAME;
+    //test case 2
+    //char name[] = "pr122";
+    //type = CINAME;
+    //test case 3
+    //char name[] = "Winsor & Newton";
+    //type = MANUFACTURER;
 
-    printf("DECLARE VAR\n\n");
     //call get paint value function
     paint_t* spa;
     spa = getPaintValue(pp, npp, name, type, &nspp);
-    printf("exit get val\n\n");
 
-    for(int i =0; i<nspp; i++){
-        printf("---------\n");
-        printf("%s\n",spa[i].manufacturer);
-        printf("%s\n",spa[i].ciName);
+    if(spa == NULL){
+        printf("Error in subarray");
+        return(1);
     }
+
+    //for(int i =0; i<nspp; i++){
+        //printf("---------\n");
+        //printf("%s\n",spa[i].manufacturer);
+        //printf("%s\n",spa[i].ciName);
+        //printf("%s\n",spa[i].marketingName);
+    //}
+
+    printPaint(spa, -1, nspp);
 
     free(pp);
     free(spa);

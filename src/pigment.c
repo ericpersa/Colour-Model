@@ -205,11 +205,9 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
         nspp:
             pointer to the number of elements found that contain the same value as name
     ***/
-    printf("IN FUNCTION\n");
 
     //create new array of structures for structs with proper prerequisites
     paint_t* spa = malloc(sizeof(paint_t));
-
     if (spa == NULL) {
         printf("Failed to allocate memory");
         exit(EXIT_FAILURE);
@@ -217,7 +215,6 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
 
     int size = 1;
 
-    printf("MALLOC\n");
     //if getType is ciName (0 because of enum)
     if(getType == 0){
         //traverse through array of apaints to look for the same name in column getType
@@ -303,7 +300,6 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
         //if the type is not input correctly return error
         return (NULL);
     }
-    printf("DONE TYPE CHECK\n");
     //return new sub array 
     return(spa);
 }
