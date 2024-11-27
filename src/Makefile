@@ -11,6 +11,9 @@ test_load: test_load.o pigment.o
 test_range: test_range.o pigment.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 
+test_range_debug: test_range.o pigment.o
+	$(CC) $(CFLAGS) $^ -g -o $@ -lm
+
 test_value: test_value.o pigment.o
 	$(CC) $(CFLAGS) $^ -o $@
 
