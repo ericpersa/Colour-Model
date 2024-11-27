@@ -29,8 +29,8 @@ int main(void){
     gValue_t type;
     int nspp = 0;
     //test case 1
-    //char name[] = "cerulean blue";
-    // type = MARKETINGNAME;
+    char name[] = "cerulean blue";
+    type = MARKETINGNAME;
     //test case 2
     //char name[] = "pr122";
     //type = CINAME;
@@ -46,13 +46,6 @@ int main(void){
         printf("Error in subarray");
         return(1);
     }
-
-    //for(int i =0; i<nspp; i++){
-        //printf("---------\n");
-        //printf("%s\n",spa[i].manufacturer);
-        //printf("%s\n",spa[i].ciName);
-        //printf("%s\n",spa[i].marketingName);
-    //}
 
     printPaint(spa, -1, nspp);
 

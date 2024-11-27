@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include"pigment.h"
 
 int printPigment(pigment_t* pp, int i, int n) {
