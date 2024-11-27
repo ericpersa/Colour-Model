@@ -1,3 +1,36 @@
-PHONY:
+#makefile  module 2 - in main
+CC = gcc
+CFLAGS = -Wall -std=c11
+
+VPATH = src bin obj
+
+#normal targets
+
+test_load: test_load.o pigment.o
+	$(CC) $(CFLAGS) $^ -o $@
+	- mv *.o obj
+	- mv test_load bin
+
+test_range: test_range.o pigment.o
+	$(CC) $(CFLAGS) $^ -o $@ -lm
+	- mv *.o obj
+	- mv test_range bin
+	
+test_value: test_value.o pigment.o
+	$(CC) $(CFLAGS) $^ -o $@
+	- mv *.o obj
+	- mv test_value bin
+
+%.o: %.c %.h
+	$(CC) $(CFLAGS) -c $< $(LDFLAGS)
+
+#phony targets
+
+.PHONY: clean package
+
+clean: test_load test_value test_range
+	- rm -f bin/test_load bin/test_value bin/test_range 
+	- rm -f obj/*.o
+
 package:
-	tar -czvf cmpt201_project01_EP_JL.tar.gz src/*.c src/*.h src/Makefile obj/ignore.txt data/*.dat bin/ignore.txt Makefile README.md
+	tar -czvf cmpt201_project02_EP_JL.tar.gz src/*.c src/*.h src/Makefile obj/ignore.txt data/*.dat bin/ignore.txt Makefile README.md
