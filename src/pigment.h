@@ -175,3 +175,15 @@ int getPaintValueHelperCopy(paint_t* spa, paint_t* pp, int* nspp, int i);
     array
     output: spa has a paint_t structure copied into it. 0 or 1 is returned based on success or failure.
 */
+
+// question 1 milestone 3
+paint_t* getPaintHue(paint_t* pp, int* n, colour_t colour);
+
+int getPaintHueSwitchHelper(colour_t colour, int* hue_range_low, int* hue_range_high);
+    /*
+purpose: helper function for getPaintHue. takes an enumerated colour and modified hue_range low and high
+so that they have the range for where that colour is found
+input: colour, a enum type, and a pointer to hue_range_low and high which will store the range of
+hueAngles at which the colour is found
+return: 1 or 0 based on success or failure, hue_range ints are modified.
+*/

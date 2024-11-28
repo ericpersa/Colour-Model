@@ -349,6 +349,129 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
     return(spa);
 }
 
+paint_t* getPaintHue(paint_t* pp, int* n, colour_t colour) {
+    // error check inputs
+    if ((pp == NULL) || (n<0)) {
+        return NULL;
+    }
+
+    // create malloced paint_t array
+    int size = 2;
+    paint_t* spa = malloc(size * sizeof(paint_t));
+    if (spa == NULL) {
+        printf("Failed to allocate memory");
+        return(NULL);
+    }
+
+
+    int hue_range_low = 0;
+    int hue_range_high = 0;
+    // each colour we get from enum corresponds to a certain hue angle.
+    int err = getPaintHueSwitchHelper(colour, &hue_range_low, &hue_range_high);
+    if (err == 1) {
+        printf("Error occured in with Switch Helper in getPaintHue. Returning with NULL");
+        return(NULL);
+    }
+
+    int index = 0;
+    // loop through pp
+    for (int i = 0; i < n; i++) {
+        if((index+1) == size){
+            size = size *2;
+            spa = realloc(spa, size*sizeof(paint_t));
+        }
+
+        if (colour == 1) {
+            // RED_ORANGE is a weird case where it must be between 345 and 15 degrees
+            if (((pp[i].hueAngle >= 0) && (pp[i].hueAngle <= 15)) || 
+            ((pp[i].hueAngle >= 345) && (pp[i].hueAngle <= 359))) {
+                // valid for red orange
+                int err = getPaintValueHelperCopy(spa, pp, index, i);
+                if (err == 1) {
+                    printf("Error Copying values in getPaintHue. returning NULL");
+                    return(NULL);
+                }
+                
+            }
+        }
+        else if ((pp[i].hueAngle >= hue_range_low) && (pp[i].hueAngle <= hue_range_high)) {
+            int err = getPaintValueHelperCopy(spa, pp, index, i);
+            if (err == 1) {
+                printf("Error Copying values in getPaintHue. returning NULL");
+                return(NULL);
+            }
+        }
+    }
+}
+
+int getPaintHueSwitchHelper(colour_t colour, int* hue_range_low, int* hue_range_high) {
+    /*
+    purpose: helper function for getPaintHue. takes an enumerated colour and modified hue_range low and high
+    so that they have the range for where that colour is found
+    input: colour, a enum type, and a pointer to hue_range_low and high which will store the range of
+    hueAngles at which the colour is found
+    return: 1 or 0 based on success or failure, hue_range ints are modified.
+    */
+    switch(colour) {
+        default:
+            return 1;
+            break;
+        case 0: //RED,
+            *hue_range_low = 315;
+            *hue_range_high = 345;
+            break;
+        case 1: //RED_ORANGE,
+            // this is a weird case. could cause errors
+            *hue_range_low = 345;
+            *hue_range_high = 15;
+            break;
+        case 2: //ORANGE,
+            *hue_range_low = 15;
+            *hue_range_high = 45;
+            break;
+        case 3: //YELLOW_ORANGE,
+            *hue_range_low = 45;
+            *hue_range_high = 75;
+            break;
+        case 4: //YELLOW,
+            *hue_range_low = 76;
+            *hue_range_high = 105;
+            break;
+        case 5: //YELLOW_GREEN,
+            *hue_range_low = 105;
+            *hue_range_high = 135;
+            break;
+        case 6: //GREEN,
+            *hue_range_low = 135;
+            *hue_range_high = 165;
+            break;
+        case 7: //BLUE_GREEN,
+            *hue_range_low = 165;
+            *hue_range_high = 195;
+            break;
+        case 8: //BLUE,
+            *hue_range_low = 195;
+            *hue_range_high = 225;
+            break;
+        case 9: //BLUE_VIOLET,
+            *hue_range_low = 225;
+            *hue_range_high = 255;
+            break;
+        case 10: //VIOLET,
+            *hue_range_low = 255;
+            *hue_range_high = 285;
+            break;
+        case 11: //RED_VIOLET
+            *hue_range_low = 285;
+            *hue_range_high = 315;
+            break;
+    }
+    return 0;
+}
+
+
+// helper functions
+
 int getPaintValueHelperCopy(paint_t* spa, paint_t* pp, int* nspp, int i) {
     if (((spa == NULL) || (pp == NULL)) || (*nspp < 0)) {
         return 1;
