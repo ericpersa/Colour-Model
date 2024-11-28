@@ -50,7 +50,6 @@ int main(void) {
     checkType = STAINING;
     
     // testing getPaintRange
-    printf("I am here hello heheheheheheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\n\n\n\n\n\n\n\n\n\n\n");
     result_arr = getPaintRange(paint_arr, paint_count, rmin_good, rmax_good, checkType, &nspp);
     if (result_arr == NULL) {
         printf("Error with getPaintRange: returned NULL\n");
@@ -61,10 +60,6 @@ int main(void) {
         printf("Error printing paints. printPaint returned 1\n");
         return 1;
     }
-
-
-    printf("\n");
-    printf("testing errors.");
 
     int rmin_bad = -3;
     int rmax_bad = 1.1111;
