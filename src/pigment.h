@@ -164,3 +164,5 @@ int getPaintRangeValueHelper (gRange_t getType, paint_t* pp, int i, int* value);
     and a pointer to int value, the value we are looking for
     output: modified value, returns 0 or 1 based on success or failure.
 */
+
+int getPaintValueHelperCopy(paint_t* spa, paint_t* pp, int* nspp, int i);

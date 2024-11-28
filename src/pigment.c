@@ -297,21 +297,13 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
                 if( *nspp == size){
                     size = size *2;
                     spa = realloc(spa, size*sizeof(paint_t));
-                 }
-                 strcpy(spa[*nspp].ciName, pp[i].ciName);
-                 strcpy(spa[*nspp].marketingName, pp[i].marketingName);
-                 strcpy(spa[*nspp].manufacturer, pp[i].manufacturer);
-                 strcpy(spa[*nspp].code, pp[i].code);
-                 spa[*nspp].transparency = pp[i].transparency;
-                 spa[*nspp].staining = pp[i].transparency;
-                 spa[*nspp].valueRange = pp[i].valueRange;
-                 spa[*nspp].granulating = pp[i].granulating;
-                 spa[*nspp].blossom = pp[i].blossom;
-                 spa[*nspp].diffusion = pp[i].diffusion;
-                 spa[*nspp].hueAngle = pp[i].hueAngle;
-                 spa[*nspp].hueShift = pp[i].hueShift;
-                 spa[*nspp].lightfast = pp[i].lightfast;
-                 (*nspp)++;
+                }
+                int err = getPaintValueHelperCopy(spa, pp, nspp, i);
+                if (err == 1) {
+                    printf("Error with getPaintValueHelperCopy in getPaintValue. Returning with NULL");
+                    return (NULL);
+                }
+                (*nspp)++;
             }
         }
     }
@@ -323,20 +315,12 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
                     size = size *2;
                     spa = realloc(spa, size*sizeof(paint_t));
                  }
-                 strcpy(spa[*nspp].ciName, pp[i].ciName);
-                 strcpy(spa[*nspp].marketingName, pp[i].marketingName);
-                 strcpy(spa[*nspp].manufacturer, pp[i].manufacturer);
-                 strcpy(spa[*nspp].code, pp[i].code);
-                 spa[*nspp].transparency = pp[i].transparency;
-                 spa[*nspp].staining = pp[i].transparency;
-                 spa[*nspp].valueRange = pp[i].valueRange;
-                 spa[*nspp].granulating = pp[i].granulating;
-                 spa[*nspp].blossom = pp[i].blossom;
-                 spa[*nspp].diffusion = pp[i].diffusion;
-                 spa[*nspp].hueAngle = pp[i].hueAngle;
-                 spa[*nspp].hueShift = pp[i].hueShift;
-                 spa[*nspp].lightfast = pp[i].lightfast;
-                 (*nspp)++;
+                int err = getPaintValueHelperCopy(spa, pp, nspp, i);
+                if (err == 1) {
+                    printf("Error with getPaintValueHelperCopy in getPaintValue. Returning with NULL");
+                    return (NULL);
+                }
+                (*nspp)++;
             }
         }
     }
@@ -348,19 +332,11 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
                     size = size *2;
                     spa = realloc(spa, size*sizeof(paint_t));
                  }
-                 strcpy(spa[*nspp].ciName, pp[i].ciName);
-                 strcpy(spa[*nspp].marketingName, pp[i].marketingName);
-                 strcpy(spa[*nspp].manufacturer, pp[i].manufacturer);
-                 strcpy(spa[*nspp].code, pp[i].code);
-                 spa[*nspp].transparency = pp[i].transparency;
-                 spa[*nspp].staining = pp[i].transparency;
-                 spa[*nspp].valueRange = pp[i].valueRange;
-                 spa[*nspp].granulating = pp[i].granulating;
-                 spa[*nspp].blossom = pp[i].blossom;
-                 spa[*nspp].diffusion = pp[i].diffusion;
-                 spa[*nspp].hueAngle = pp[i].hueAngle;
-                 spa[*nspp].hueShift = pp[i].hueShift;
-                 spa[*nspp].lightfast = pp[i].lightfast;
+                 int err = getPaintValueHelperCopy(spa, pp, nspp, i);
+                 if (err == 1) {
+                    printf("Error with getPaintValueHelperCopy in getPaintValue. Returning with NULL");
+                    return (NULL);
+                 }
                  (*nspp)++;
             }
         }
@@ -371,6 +347,27 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
     }
     //return new sub array 
     return(spa);
+}
+
+int getPaintValueHelperCopy(paint_t* spa, paint_t* pp, int* nspp, int i) {
+    if (((spa == NULL) || (pp == NULL)) || (*nspp < 0)) {
+        return 1;
+    }
+    strcpy(spa[*nspp].ciName, pp[i].ciName);
+    strcpy(spa[*nspp].marketingName, pp[i].marketingName);
+    strcpy(spa[*nspp].manufacturer, pp[i].manufacturer);
+    strcpy(spa[*nspp].code, pp[i].code);
+    spa[*nspp].transparency = pp[i].transparency;
+    spa[*nspp].staining = pp[i].transparency;
+    spa[*nspp].valueRange = pp[i].valueRange;
+    spa[*nspp].granulating = pp[i].granulating;
+    spa[*nspp].blossom = pp[i].blossom;
+    spa[*nspp].diffusion = pp[i].diffusion;
+    spa[*nspp].hueAngle = pp[i].hueAngle;
+    spa[*nspp].hueShift = pp[i].hueShift;
+    spa[*nspp].lightfast = pp[i].lightfast;
+
+    return 0;
 }
 
 
