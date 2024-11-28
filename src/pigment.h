@@ -146,3 +146,6 @@ int printPigmentHelper(pigment_t* pp, int j);
     input: pp, a paint_t struct, and j, the index that is being printed
     output: 1 if error occured 0 if good.
  */
+
+
+getPaintRangeHelper(gRange_t getType, int* actmin, int* actmax);

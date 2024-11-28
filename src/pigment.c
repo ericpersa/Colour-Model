@@ -1,6 +1,5 @@
 // ID BOX: Eric Persa 3123945
 // ID BOX : Jenna Leaw 3147578
-
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
@@ -72,37 +71,11 @@ paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t ge
     float actmin = 0.0;
     float actmax = 0.0;
 
-    // switch case statement to get the property we are looking for
-
-    switch(getType) {
-        case 0:
-            actmin = 0;
-            actmax = 359 * rmax;
-            break;
-        case 1:
-            actmin = 35 * rmin;
-            actmax = 68 * rmax;
-            break;
-        case 2:
-            actmin = 0 * rmin;
-            actmax = 2 * rmax;
-            break;
-        case 3:
-            actmin = 0 * rmin;
-            actmax = 4 * rmax;
-            break;
-        case 4:
-            actmin = 0 * rmin;
-            actmax = 4 * rmax;
-            break;
-        case 5:
-            actmin = 0 * rmin;
-            actmax = 4 * rmax;
-            break;
-        case 6:
-            actmin = 1 * rmin;
-            actmax = 8 * rmax;
-            break;
+    // switch case helper
+    int err = getPaintRangeHelper(getType, &actmin, &actmax, rmin, rmax);
+    if (err != 0) {
+        printf("Error with getPaintRangeHelper in getPaintRange function. exiting getPaintRange");
+        return(NULL);
     }
 
     //dynamically allocate paint array of structures
@@ -114,31 +87,11 @@ paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t ge
     for (int i = 0; i < npp;  i++) {
         // check if range of values falls into normalized range
         int value = 0;
-        switch (getType) {
-            default:
-                return NULL;
-            case 0:
-                value = pp[i].hueAngle;
-                break;
-            case 1:
-                value = pp[i].valueRange;
-                break;
-            case 2:
-                value = pp[i].granulating;
-                break;
-            case 3:
-                value = pp[i].transparency;
-                break;
-            case 4:
-                value = pp[i].staining;
-                break;
-            case 5:
-                value = pp[i].blossom;
-                break;
-            case 6:
-                value = pp[i].lightfast;
-                break;
-        }   
+        err = getPaintRangeValueHelper (getType, pp, i, &value); 
+        if (err != 0) {
+            printf("Error with getPaintRangeValueHelper in getPaintRange function. exiting getPaintRange");
+        return(NULL);
+    }
 
         if ((value >= actmin) && (value <= actmax)) {
             // the property we are checking falls within the specified range, append to dynamic list
@@ -420,6 +373,7 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
     return(spa);
 }
 
+
 int printPaintHelper(paint_t* pp, int j) {
     if ((pp == NULL) || (j < 0)) {
         return 1;
@@ -453,5 +407,83 @@ int printPigmentHelper(pigment_t* pp, int j) {
     printf("hue [degrees] : %d\n", pp[j].hueAngle);
     printf("huePurity     : %f\n", pp[j].huePurity);
     printf("(ahp,bhp)     : %f\n", *(pp[j].abHp));
+    return 0;
+}
+
+int getPaintRangeHelper(gRange_t getType, float* actmin, float* actmax, float rmin, float rmax) {
+    if (getType < 0 || getType > 6)  {
+        return 1; // invalid input
+    }
+    if (actmin == NULL || actmax == NULL) {
+        return 1; // null pointer error
+    }
+    switch(getType) {
+        default:
+                return 1;
+        case 0:
+            *actmin = 0;
+            *actmax = 359 * rmax;
+            break;
+        case 1:
+            *actmin = 35 * rmin;
+            *actmax = 68 * rmax;
+            break;
+        case 2:
+            *actmin = 0 * rmin;
+            *actmax = 2 * rmax;
+            break;
+        case 3:
+            *actmin = 0 * rmin;
+            *actmax = 4 * rmax;
+            break;
+        case 4:
+            *actmin = 0 * rmin;
+            *actmax = 4 * rmax;
+            break;
+        case 5:
+            *actmin = 0 * rmin;
+            *actmax = 4 * rmax;
+            break;
+        case 6:
+            *actmin = 1 * rmin;
+            *actmax = 8 * rmax;
+            break;
+    }
+    return 0;
+}
+
+int getPaintRangeValueHelper (gRange_t getType, paint_t* pp, int i, int* value) {
+    if (getType < 0 || getType > 6)  {
+        return 1; // invalid input
+    }
+    if (pp == NULL) {
+        return 1;
+    }
+    int value = 0;
+    switch (getType) {
+        default:
+            return 1;
+        case 0:
+            *value = pp[i].hueAngle;
+            break;
+        case 1:
+            *value = pp[i].valueRange;
+            break;
+        case 2:
+            *value = pp[i].granulating;
+            break;
+        case 3:
+            *value = pp[i].transparency;
+            break;
+        case 4:
+            *value = pp[i].staining;
+            break;
+        case 5:
+            *value = pp[i].blossom;
+            break;
+        case 6:
+            *value = pp[i].lightfast;
+            break;
+    }   
     return 0;
 }
