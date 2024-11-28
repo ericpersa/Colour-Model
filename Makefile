@@ -1,3 +1,6 @@
+# ID BOX: Eric Persa 3123945
+# ID BOX : Jenna Leaw 3147578
+
 #makefile  module 2 - in main
 CC = gcc
 CFLAGS = -Wall -std=c11

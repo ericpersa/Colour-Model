@@ -1,4 +1,6 @@
 #makefile project milestone 2
+# ID BOX: Eric Persa 3123945
+# ID BOX : Jenna Leaw 3147578
 
 CC = gcc
 CFLAGS = -Wall -std=c11
