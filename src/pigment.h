@@ -148,4 +148,19 @@ int printPigmentHelper(pigment_t* pp, int j);
  */
 
 
-getPaintRangeHelper(gRange_t getType, int* actmin, int* actmax);
+int getPaintRangeHelper(gRange_t getType, int* actmin, int* actmax, float rmin, float rmax);
+/* 
+    purpose: helper function for getPaintRange that executes a switch statement to get min and max values
+    input: enumeration getType, a pointer to actmin and actmax, and rmin and rmax, floats used for
+    the calculation
+    output: modified actmin and actmax values, return 0 or 1 based on success or failure.
+*/
+
+int getPaintRangeValueHelper (gRange_t getType, paint_t* pp, int i, int* value);
+/* 
+    purpose: helper function for getPaintRange that executes a switch statement to get values for v
+    alidity checking
+    input: enumeration getType, a pointer to pp, an array of paint_t structs, integer i for indexing,
+    and a pointer to int value, the value we are looking for
+    output: modified value, returns 0 or 1 based on success or failure.
+*/
