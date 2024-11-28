@@ -1,25 +1,27 @@
 # Colour-Model
 
-#COMPILATION
+# COMPILATION
 
-# Milestone 1
+# Milestone 2
 To compile and run the project:
 1. Ensure you have the necessary environment and dependencies installed:
     - A C compiler (e.g. GCC)
     - Make (to run make commands)
 
-2. Change to the src directory
+2.  Compile using the following command
+    make 
 
-3. Compile using the following command
-    make
+3. Change to the bin directory
 
-4. To test everything is working properly, use the following command
+4. To test everything is working properly, use the following command(s)
     ./test_load
+    ./test_value
+    ./test_range
 
-#VARIABLES
+# VARIABLES
 
 Source - https://handprint.com/HP/WCL/huepurity.html
-##in pigments.dat
+## in pigments.dat
 COLOR INDEX - generic C.I. name of the pigment (this is missing for convenience mixtures and unclassified mineral pigments)
 PIGMENT NAME - common pigment name or marketing name
 J - pigment location in the CIECAM color appearance space
@@ -32,7 +34,7 @@ aHP - ab coordinates for pigment hue purity, scaled so that maximum possible hue
 bHP - ab coordinates for pigment hue purity, scaled so that maximum possible hue purity equals 1.0
 
 Source - https://www.handprint.com/HP/WCL/pigmt8.html 
-##in paints.dat
+## in paints.dat
 C.I.NAME - colour index name/number of paint 
 MARKETING NAME - name given to colour from the paint manufacterer
 Manufacturer - company that produces and sells the paint
