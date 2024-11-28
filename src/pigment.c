@@ -8,19 +8,6 @@
 #include"pigment.h"
 
 int printPigment(pigment_t* pp, int i, int n) {
-    // question 1 milestone 2
-    /*
-    purpose: 
-        prints pigments within an array in a formatted way
-    input:
-    pp
-        pointer pointing to an array of pigment structures
-    n:
-        the size of pp
-    i
-        index of the array to print. -1 means print whole array.
-    */
-
     // error check for out of bounds index.
     if ((i < -1) || (i > n-1)) {
         return 1;
@@ -56,20 +43,27 @@ int printPigment(pigment_t* pp, int i, int n) {
     return 0;
 }
 
-int printPaint(paint_t* pp, int i, int n) {
-    // question 1 milestone 2
-    /*
-    purpose: 
-        prints paints within an array in a formatted way
-    input:
-    pp
-        pointer pointing to an array of paint structures
-    n:
-        the size of pp
-    i
-        index of the array to print. -1 means print whole array.
-    */
+int printPaintHelper(paint_t* pp, int j) {
+    if ((pp = NULL) || (j < 0)) {
+        return 1;
+    }
+    printf("--------------\n");
+    printf("ciName       : %s\n", pp[j].ciName);
+    printf("marketingName: %s\n", pp[j].marketingName);
+    printf("manufacturer : %s\n", pp[j].manufacturer);
+    printf("transparency : %d\n", pp[j].transparency);
+    printf("staining     : %d\n", pp[j].staining);
+    printf("valueRange   : %d\n", pp[j].valueRange);
+    printf("granulating  : %d\n", pp[j].granulating);
+    printf("blossom      : %d\n", pp[j].blossom);
+    printf("diffusion    : %d\n", pp[j].diffusion);
+    printf("hueAngle     : %d\n", pp[j].hueAngle);
+    printf("hueShift     : %d\n", pp[j].hueShift);
+    printf("lightfast    : %d\n", pp[j].lightfast);
+    return 0;
+}
 
+int printPaint(paint_t* pp, int i, int n) {
     // error check for out of bounds index.
     if ((i < -1) || (i > n-1)) {
         return 1;
@@ -80,19 +74,10 @@ int printPaint(paint_t* pp, int i, int n) {
         // i = -1, print whole array
         for (int j = 0; j <= n-1; j++) {
             // first paint struct is *(pp + 0)
-            printf("--------------\n");
-            printf("ciName       : %s\n", pp[j].ciName);
-            printf("marketingName: %s\n", pp[j].marketingName);
-            printf("manufacturer : %s\n", pp[j].manufacturer);
-            printf("transparency : %d\n", pp[j].transparency);
-            printf("staining     : %d\n", pp[j].staining);
-            printf("valueRange   : %d\n", pp[j].valueRange);
-            printf("granulating  : %d\n", pp[j].granulating);
-            printf("blossom      : %d\n", pp[j].blossom);
-            printf("diffusion    : %d\n", pp[j].diffusion);
-            printf("hueAngle     : %d\n", pp[j].hueAngle);
-            printf("hueShift     : %d\n", pp[j].hueShift);
-            printf("lightfast    : %d\n", pp[j].lightfast);
+            int err = printPaintHelper(pp, j);
+            if (err == NULL) {
+                printf("printPaint: error with index -1, printing paints");
+            }
         }
         return 0;
     }
@@ -213,18 +198,6 @@ paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t ge
 }
 
 pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n) {
-    /*
-    purpose: 
-     loadPigmentData will read data line by line from the filename data location into a pigment_t  
-     structure
-    input:
-     filename:
-         a pointer to the file where the data is stored
-     pArray:
-         an array of pigment structures where the data is stored
-     n:
-         a pointer to the number of entries found.
-    */
    char *token;
    FILE* fp = fopen(filename, "r");
 
@@ -309,18 +282,6 @@ pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n) {
 }
 
 paint_t* loadPaintData( char* filename, paint_t* pArray, int* n){
-    /***
-    purpose:
-        read in data line by line from file of paints, taking each specified value and putting it 
-        into array of paint_t structs.
-    input:
-        filename: 
-            pointer to where the file containing paint values is stored
-        pArray:
-            Array containing paint_t structs for each paint from file
-        n:
-            number of paints that have been input into pArray
-    ***/
 
     char line[300];
     char *token;
@@ -398,21 +359,6 @@ paint_t* loadPaintData( char* filename, paint_t* pArray, int* n){
 }
 
 paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* nspp){
-/***
-    purpose:
-        
-    input:
-        pp:
-            pointer to loaded array of paint data
-        npp
-            number of elements within the paint data array
-        name:
-            name that the code is looking to match within the array
-        getType:
-            enumeration of ciName, marketingName, manufacturer
-        nspp:
-            pointer to the number of elements found that contain the same value as name
-    ***/
 
     //create new array of structures for structs with proper prerequisites
     paint_t* spa = malloc(sizeof(paint_t));

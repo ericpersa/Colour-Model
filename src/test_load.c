@@ -1,3 +1,6 @@
+// ID BOX: Eric Persa 3123945
+// ID BOX : Jenna Leaw 3147578
+
 #include "pigment.h"
 #include <stdio.h>
 #include <stdlib.h>

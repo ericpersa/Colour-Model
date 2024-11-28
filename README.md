@@ -18,6 +18,22 @@ To compile and run the project:
     ./test_value
     ./test_range
 
+
+# Colour Wheel Decisions
+345° - 15° - Red:Orange
+15° - 45° - Orange
+45° - 75° - Yellow Orange
+75° - 105° - Yellow
+105° - 135° - Yellow Green
+135° - 165° - Green
+165° - 195° - Blue Green
+195° - 225° - Blue
+225° - 255° - Blue Violet
+255° - 285° - Violet
+285° - 315° - Red Violet
+315° - 345° - Red
+
+
 # VARIABLES
 
 Source - https://handprint.com/HP/WCL/huepurity.html

@@ -131,3 +131,7 @@ int printPaint(paint_t* pp, int i, int n); // question 2 of milestone 2
     */
 
 paint_t* getPaintValue(paint_t*, int, char*, gValue_t, int*);
+
+
+int printPaintHelper(paint_t* pp, int j);
+// helper function for printPaint
