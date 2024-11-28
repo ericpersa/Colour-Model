@@ -148,7 +148,7 @@ int printPigmentHelper(pigment_t* pp, int j);
  */
 
 
-int getPaintRangeHelper(gRange_t getType, int* actmin, int* actmax, float rmin, float rmax);
+int getPaintRangeHelper(gRange_t getType, float* actmin, float* actmax, float rmin, float rmax);
 /* 
     purpose: helper function for getPaintRange that executes a switch statement to get min and max values
     input: enumeration getType, a pointer to actmin and actmax, and rmin and rmax, floats used for
@@ -165,4 +165,13 @@ int getPaintRangeValueHelper (gRange_t getType, paint_t* pp, int i, int* value);
     output: modified value, returns 0 or 1 based on success or failure.
 */
 
+
 int getPaintValueHelperCopy(paint_t* spa, paint_t* pp, int* nspp, int i);
+/* 
+    purpose: helper function for getPaintValue that copies data from a subarray spa to the main array
+    pp
+    input: emain array pp, subarray spa, a pointer to an integer nspp representing the number of
+    entries, and i, which is the index of the paint_t struct being copied from the pp array to the spa 
+    array
+    output: spa has a paint_t structure copied into it. 0 or 1 is returned based on success or failure.
+*/
