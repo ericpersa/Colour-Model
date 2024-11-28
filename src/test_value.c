@@ -7,7 +7,7 @@
 int main(void){
     // load data into array
     int paint_count = 0;
-    FILE* fd = fopen("../data/paints.dat", "r");
+    FILE* fd = fopen("data/paints.dat", "r");
     if (fd == NULL) {
         printf("File Error\n");
         fclose(fd);
@@ -18,7 +18,7 @@ int main(void){
     paint_t* pp = malloc(sizeof(paint_t));
     
     // call paint function and check output
-    pp= loadPaintData("../data/paints.dat", pp ,&paint_count);
+    pp= loadPaintData("data/paints.dat", pp ,&paint_count);
     if(pp == NULL){
         printf("Error loading paint_t\n");
         return(1);
