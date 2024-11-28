@@ -131,3 +131,18 @@ int printPaint(paint_t* pp, int i, int n); // question 2 of milestone 2
     */
 
 paint_t* getPaintValue(paint_t*, int, char*, gValue_t, int*);
+/***
+    purpose:
+        
+    input:
+        pp:
+            pointer to loaded array of paint data
+        npp
+            number of elements within the paint data array
+        name:
+            name that the code is looking to match within the array
+        getType:
+            enumeration of ciName, marketingName, manufacturer
+        nspp:
+            pointer to the number of elements found that contain the same value as name
+    ***/
