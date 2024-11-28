@@ -1,3 +1,6 @@
+// ID BOX: Eric Persa 3123945
+// ID BOX : Jenna Leaw 3147578
+
 typedef enum {
     HUE,
     VALUE,
@@ -7,6 +10,21 @@ typedef enum {
     BLOOM,
     LIGHTFAST
 } gRange_t;
+
+typedef enum {
+    RED,
+    RED_ORANGE,
+    ORANGE,
+    YELLOW_ORANGE,
+    YELLOW,
+    YELLOW_GREEN,
+    GREEN,
+    BLUE_GREEN,
+    BLUE,
+    BLUE_VIOLET,
+    VIOLET,
+    RED_VIOLET
+}
 
 typedef struct pigment_t {
     char ciName[50];

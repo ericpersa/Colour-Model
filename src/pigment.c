@@ -1,5 +1,5 @@
 // ID BOX: Eric Persa 3123945
-// ID BOX : Jenna Leaw 
+// ID BOX : Jenna Leaw 3147578
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -114,6 +114,8 @@ int printPaint(paint_t* pp, int i, int n) {
 }
 
 paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp ) {
+    // add purpose
+    
     // error checking for rmin and max, must be between 0 and 1 inclusive
     if (((rmin < 0) || (rmin > 1)) || ((rmax > 1) || (rmax < 0)) || (rmin > rmax)) {
         return NULL;
