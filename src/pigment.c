@@ -7,6 +7,7 @@
 #include <strings.h>
 #include"pigment.h"
 
+
 int printPigment(pigment_t* pp, int i, int n) {
     // error check for out of bounds index.
     if ((i < -1) || (i > n-1)) {
@@ -18,48 +19,18 @@ int printPigment(pigment_t* pp, int i, int n) {
         // i = -1, print whole array
         for (int j = 0; j <= n-1; j++) {
             // first paint struct is *(pp + 0)
-            printf("--------------\n");
-            printf("ciName        : %s\n", pp[j].ciName);
-            printf("pigmentName   : %s\n", pp[j].pigmentName);
-            printf("value         : %d\n", pp[j].value);
-            printf("chroma        : %d\n", pp[j].chroma);
-            printf("(a,b)         : %ls\n", pp[j].abValue);
-            printf("hue [degrees] : %d\n", pp[j].hueAngle);
-            printf("huePurity     : %f\n", pp[j].huePurity);
-            printf("(ahp,bhp)     : %f\n", *(pp[j].abHp));
+            int err = printPigmentHelper(pp, j);
+            if (err == 1) {
+                printf("printPigment: error printing with index -1");
+            }
         }
         return 0;
     }
     // print with index i
-    printf("--------------\n");
-    printf("ciName        : %s", pp[i].ciName);
-    printf("pigmentName   : %s", pp[i].pigmentName);
-    printf("value         : %d", pp[i].value);
-    printf("chroma        : %d", pp[i].chroma);
-    printf("(a,b)         : (%ls)", pp[i].abValue);
-    printf("hue [degrees] : %d", pp[i].hueAngle);
-    printf("huePurity     : %f", pp[i].huePurity);
-    printf("(ahp,bhp)     : %f", *(pp[i].abHp));
-    return 0;
-}
-
-int printPaintHelper(paint_t* pp, int j) {
-    if ((pp = NULL) || (j < 0)) {
-        return 1;
+    int err = printPigmentHelper(pp, i);
+    if (err == 1) {
+        printf("printPigment: error printing at given index");
     }
-    printf("--------------\n");
-    printf("ciName       : %s\n", pp[j].ciName);
-    printf("marketingName: %s\n", pp[j].marketingName);
-    printf("manufacturer : %s\n", pp[j].manufacturer);
-    printf("transparency : %d\n", pp[j].transparency);
-    printf("staining     : %d\n", pp[j].staining);
-    printf("valueRange   : %d\n", pp[j].valueRange);
-    printf("granulating  : %d\n", pp[j].granulating);
-    printf("blossom      : %d\n", pp[j].blossom);
-    printf("diffusion    : %d\n", pp[j].diffusion);
-    printf("hueAngle     : %d\n", pp[j].hueAngle);
-    printf("hueShift     : %d\n", pp[j].hueShift);
-    printf("lightfast    : %d\n", pp[j].lightfast);
     return 0;
 }
 
@@ -75,26 +46,17 @@ int printPaint(paint_t* pp, int i, int n) {
         for (int j = 0; j <= n-1; j++) {
             // first paint struct is *(pp + 0)
             int err = printPaintHelper(pp, j);
-            if (err == NULL) {
+            if (err == 1) {
                 printf("printPaint: error with index -1, printing paints");
             }
         }
         return 0;
     }
     // print with index i
-    printf("--------------\n");
-    printf("ciName       : %s\n", pp[i].ciName);
-    printf("marketingName: %s\n", pp[i].marketingName);
-    printf("manufacturer : %s\n", pp[i].manufacturer);
-    printf("transparency : %d\n", pp[i].transparency);
-    printf("staining     : %d\n", pp[i].staining);
-    printf("valueRange   : %d\n", pp[i].valueRange);
-    printf("granulating  : %d\n", pp[i].granulating);
-    printf("blossom      : %d\n", pp[i].blossom);
-    printf("diffusion    : %d\n", pp[i].diffusion);
-    printf("hueAngle     : %d\n", pp[i].hueAngle);
-    printf("hueShift     : %d\n", pp[i].hueShift);
-    printf("lightfast    : %d\n", pp[i].lightfast);
+    int err = printPaintHelper(pp, i);
+    if (err == 1) {
+        printf("printPaint: error with index -1, printing paints");
+    }
     return 0;
 }
 
@@ -458,3 +420,38 @@ paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* 
     return(spa);
 }
 
+int printPaintHelper(paint_t* pp, int j) {
+    if ((pp == NULL) || (j < 0)) {
+        return 1;
+    }
+    printf("--------------\n");
+    printf("ciName       : %s\n", pp[j].ciName);
+    printf("marketingName: %s\n", pp[j].marketingName);
+    printf("manufacturer : %s\n", pp[j].manufacturer);
+    printf("transparency : %d\n", pp[j].transparency);
+    printf("staining     : %d\n", pp[j].staining);
+    printf("valueRange   : %d\n", pp[j].valueRange);
+    printf("granulating  : %d\n", pp[j].granulating);
+    printf("blossom      : %d\n", pp[j].blossom);
+    printf("diffusion    : %d\n", pp[j].diffusion);
+    printf("hueAngle     : %d\n", pp[j].hueAngle);
+    printf("hueShift     : %d\n", pp[j].hueShift);
+    printf("lightfast    : %d\n", pp[j].lightfast);
+    return 0;
+}
+
+int printPigmentHelper(pigment_t* pp, int j) {
+    if ((pp == NULL) || (j < 0)) {
+        return 1;
+    }
+    printf("--------------\n");
+    printf("ciName        : %s\n", pp[j].ciName);
+    printf("pigmentName   : %s\n", pp[j].pigmentName);
+    printf("value         : %d\n", pp[j].value);
+    printf("chroma        : %d\n", pp[j].chroma);
+    printf("(a,b)         : %ls\n", pp[j].abValue);
+    printf("hue [degrees] : %d\n", pp[j].hueAngle);
+    printf("huePurity     : %f\n", pp[j].huePurity);
+    printf("(ahp,bhp)     : %f\n", *(pp[j].abHp));
+    return 0;
+}

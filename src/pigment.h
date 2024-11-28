@@ -134,4 +134,15 @@ paint_t* getPaintValue(paint_t*, int, char*, gValue_t, int*);
 
 
 int printPaintHelper(paint_t* pp, int j);
-// helper function for printPaint
+/* 
+    purpose: helper function for printPaint
+    input: pp, a paint_t struct, and j, the index that is being printed
+    output: 1 if error occured 0 if good.
+ */
+
+int printPigmentHelper(pigment_t* pp, int j);
+/* 
+    purpose: helper function for printPigment
+    input: pp, a paint_t struct, and j, the index that is being printed
+    output: 1 if error occured 0 if good.
+ */
