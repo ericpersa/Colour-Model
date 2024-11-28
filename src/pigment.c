@@ -396,21 +396,6 @@ paint_t* loadPaintData( char* filename, paint_t* pArray, int* n){
 }
 
 paint_t* getPaintValue(paint_t* pp, int npp, char* name, gValue_t getType, int* nspp){
-/***
-    purpose:
-        
-    input:
-        pp:
-            pointer to loaded array of paint data
-        npp
-            number of elements within the paint data array
-        name:
-            name that the code is looking to match within the array
-        getType:
-            enumeration of ciName, marketingName, manufacturer
-        nspp:
-            pointer to the number of elements found that contain the same value as name
-    ***/
 
     //create new array of structures for structs with proper prerequisites
     paint_t* spa = malloc(sizeof(paint_t));
