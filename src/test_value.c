@@ -28,6 +28,7 @@ int main(void){
     int npp = paint_count;
     gValue_t type;
     int nspp = 0;
+    
     //test case 1
     char name[] = "cerulean blue";
     type = MARKETINGNAME;
