@@ -375,7 +375,7 @@ paint_t* getPaintHue(paint_t* pp, int* n, colour_t colour) {
 
     int index = 0;
     // loop through pp
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < *n; i++) {
         if((index+1) == size){
             size = size *2;
             spa = realloc(spa, size*sizeof(paint_t));
@@ -386,7 +386,7 @@ paint_t* getPaintHue(paint_t* pp, int* n, colour_t colour) {
             if (((pp[i].hueAngle >= 0) && (pp[i].hueAngle <= 15)) || 
             ((pp[i].hueAngle >= 345) && (pp[i].hueAngle <= 359))) {
                 // valid for red orange
-                int err = getPaintValueHelperCopy(spa, pp, index, i);
+                int err = getPaintValueHelperCopy(spa, pp, &index, i);
                 if (err == 1) {
                     printf("Error Copying values in getPaintHue. returning NULL");
                     return(NULL);
@@ -395,13 +395,14 @@ paint_t* getPaintHue(paint_t* pp, int* n, colour_t colour) {
             }
         }
         else if ((pp[i].hueAngle >= hue_range_low) && (pp[i].hueAngle <= hue_range_high)) {
-            int err = getPaintValueHelperCopy(spa, pp, index, i);
+            int err = getPaintValueHelperCopy(spa, pp, &index, i);
             if (err == 1) {
                 printf("Error Copying values in getPaintHue. returning NULL");
                 return(NULL);
             }
         }
     }
+    return spa;
 }
 
 int getPaintHueSwitchHelper(colour_t colour, int* hue_range_low, int* hue_range_high) {
@@ -579,7 +580,7 @@ int getPaintRangeValueHelper (gRange_t getType, paint_t* pp, int i, int* value) 
     if (pp == NULL) {
         return 1;
     }
-    int value = 0;
+    // int value = 0;
     switch (getType) {
         default:
             return 1;

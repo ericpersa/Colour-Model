@@ -1,0 +1,5 @@
+# ignore binary directory in project
+**/bin
+
+#ignore any object files created
+*.o
