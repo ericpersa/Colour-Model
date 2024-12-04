@@ -27,6 +27,11 @@ test_value: test_value.o pigment.o
 	- mv *.o ../obj
 	- mv test_value ../bin
 
+test_colour: test_colour.o pigment.o
+	$(CC) $(CFLAGS) $^ -o $@
+	- mv *.o ../obj
+	- mv test_colour ../bin
+
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $< $(LDFLAGS)
 
