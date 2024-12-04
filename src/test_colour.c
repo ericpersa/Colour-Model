@@ -24,14 +24,22 @@ int main(void) {
     }
 
     paint_t* spa;
-    colour_t colour = RED_ORANGE; // testing this one specifically as it's a weird case
-    spa = getPaintHue(pp, &n, colour);
+    colour_t colour = RED; // testing this one specifically as it's a weird case
+
+    int size_new = n; // copy n
+    
+    
+    
+    spa = getPaintHue(pp, &size_new, colour);
     if(spa == NULL) {
         perror("An error has occured");
     }
 
+    printPaint(spa, -1, size_new);
+
 
     free(pp); pp=NULL; //free malloced array
+    free(spa); spa=NULL;
 
     return(0);
 }
