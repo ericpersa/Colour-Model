@@ -178,6 +178,13 @@ int getPaintValueHelperCopy(paint_t* spa, paint_t* pp, int* nspp, int i);
 
 // question 1 milestone 3
 paint_t* getPaintHue(paint_t* pp, int* n, colour_t colour);
+/*
+    purpose: given a color, return a subarray of the main paint array which contains all colours
+    specified
+    input: pp, a pointer to the paint array with data loaded from paints.dat
+    n a pointer to the number of paint structs in pp
+    colour: an enumeration type which is given by the user based on the colour they want to input
+*/
 
 int getPaintHueSwitchHelper(colour_t colour, int* hue_range_low, int* hue_range_high);
     /*
