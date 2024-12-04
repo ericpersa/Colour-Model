@@ -24,7 +24,7 @@ int main(void) {
     }
 
     paint_t* spa;
-    colour_t colour = RED; // testing this one specifically as it's a weird case
+    colour_t colour = GREEN; // testing this one specifically as it's a weird case
 
     int size_new = n; // copy n
     
@@ -35,7 +35,10 @@ int main(void) {
         perror("An error has occured");
     }
 
+
     printPaint(spa, -1, size_new);
+
+    free(spa); spa=NULL;
 
 
     free(pp); pp=NULL; //free malloced array
