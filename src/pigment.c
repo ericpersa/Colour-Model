@@ -511,6 +511,11 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
         int ncopy = *n;
         //get unsorted array of colors, then send to helper to get palette with only values that fit properties 
         print_t* unsortedpps = paletteTriadHelper(pp, ncopy, color);
+
+        // if there are no properties to sort through return subarray
+        if(proptype == NULL){
+            return(unsortedpps);
+        }
         pps = paletteFullHelper(unsortedpps, ncopy, proptype, propval);
 
         //free unsorted since it is done being used
@@ -523,12 +528,27 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
     //type complementary
     else if(palette == "complementary"){
         paint_t* unsortedpps = paletteComplementaryHelper(pp, copyn, color);
-        pps = paletteFullHelper((unsortedpps, ncopy, proptype, propval);)
+
+        // if there are no properties to sort through return subarray
+        if(proptype == NULL){
+            return(unsortedpps);
+        }
+        pps = paletteFullHelper(unsortedpps, ncopy, proptype, propval);
+
+         //free unsorted since it is done being used
+        free(unsortedpps);
+        unsortedpps = NULL;
+
         return(pps);
     }
     //type split complementary
     else if(palette == "split complementary"){
         paint_t* unsortedpps = paletteSplitCompHelper(pp, ncopy, color);
+        // if there are no properties to sort through return subarray
+        if(proptype == NULL){
+            return(unsortedpps);
+        }
+
 
     }
 
@@ -918,6 +938,111 @@ paint_t* paletteComplementaryHelper(paint_t* pp, int* n, char color){
 }
 
  paint_t* paletteSplitCompHelper(paint_t* pp, int* n, char color){
+    //error check inputs
+    if(pp == NULL || n<0){
+        return(NULL);
+    }
+     //get a new n for each call to get back the number of values in sub arrays
+    int n1 = *n;
+    int n2 = *n;
+    int n3 = *n;
+        
+    //create pointers for sub arrays for output of getPaintHue
+    paint_t* array1;
+    paint_t* array2;
+    paint_t* array3;
     
+    //check each color 
+    if(color == "YELLOW"){
+        array1 = getPaintHue(pp, n1, "YELLOW");
+        array2 = getPaintHue(pp, n2, "BLUE-VIOLET");
+        array3 = getPaintHue(pp, n3, "RED-VIOLET");
+    }
+    else if (color == "YELLOW-ORANGE"){
+        array1 = getPaintHue(pp, n1, "YELLOW-ORANGE");
+        array2 = getPaintHue(pp, n2, "BLUE");
+        array3 = getPaintHue(pp, n3, "VIOLET");
+    }
+    else if(color == "ORANGE"){
+        array1 = getPaintHue(pp, n1, "ORANGE");
+        array2 = getPaintHue(pp, n2, "BLUE-GREEN");
+        array3 = getPaintHue(pp, n3, "BLUE-VIOLET");
+    }
+    else if(color == "RED-ORANGE"){
+        array1 = getPaintHue(pp, n1, "RED-ORANGE");
+        array2 = getPaintHue(pp, n2, "GREEN");
+        array3 = getPaintHue(pp, n3, "BLUE");
+    }
+    else if(color == "RED"){
+        array1 = getPaintHue(pp, n1, "RED");
+        array2 = getPaintHue(pp, n2, "YELLOW-GREEN");
+        array3 = getPaintHue(pp, n3, "BLUE-GREEN");
+    }
+    else if(color == "RED-VIOLET"){
+        array1 = getPaintHue(pp, n1, "RED-VIOLET");
+        array2 = getPaintHue(pp, n2, "YELLOW");
+        array3 = getPaintHue(pp, n3, "GREEN");
+    }
+    else if(color == "VIOLET"){
+        array1 = getPaintHue(pp, n1, "VIOLET");
+        array2 = getPaintHue(pp, n2, "YELLOW-ORANGE");
+        array3 = getPaintHue(pp, n3, "YELLOW-GREEN");
+    }
+    else if(color == "BLUE-VIOLET"){
+        array1 = getPaintHue(pp, n1, "BLUE-VIOLET");
+        array2 = getPaintHue(pp, n2, "ORANGE");
+        array3 = getPaintHue(pp, n3, "YELLOW");
+    }
+    else if(color == "BLUE"){
+        array1 = getPaintHue(pp, n1, "BLUE");
+        array2 = getPaintHue(pp, n2, "RED-ORANGE");
+        array3 = getPaintHue(pp, n3, "YELLOW-ORANGE");
+    }
+    else if(color == "BLUE-GREEN"){
+        array1 = getPaintHue(pp, n1, "BLUE-GREEN");
+        array2 = getPaintHue(pp, n2, "RED");
+        array3 = getPaintHue(pp, n3, "ORANGE");
+    }
+    else if(color == "GREEN"){
+        array1 = getPaintHue(pp, n1, "GREEN");
+        array2 = getPaintHue(pp, n2, "RED-VIOLET");
+        array3 = getPaintHue(pp, n3, "RED-ORANGE");
+    }
+    else if(color == "YELLOW-GREEN"){
+        array1 = getPaintHue(pp, n1, "YELLOW-GREEN");
+        array2 = getPaintHue(pp, n2, "VIOLET");
+        array3 = getPaintHue(pp, n3, "RED");
+    }
 
+    //implement all colours into one array
+    int count = 0;
+    int ret;
+    for(int i = 0: i<n1; i++){
+        ret = getPaintValueHelperCopy(pps, array1, count, i);
+            count ++;
+    }
+    //error check copy
+    it(ret ==1){
+        return(NULL);
+    }
+    for(int i = 0: i<n2; i++){
+        ret =getPaintValueHelperCopy(pps, array2, count, i);
+            count ++;
+    }
+    //error check copy
+    it(ret ==1){
+        return(NULL);
+    }
+    for(int i = 0: i<n3; i++){
+        ret = getPaintValueHelperCopy(pps, array3, count, i);
+            count ++;
+    }
+    //error check copy
+    it(ret ==1){
+        return(NULL);
+    }
+
+    //set n equal to sum of array 1+2+3
+    *n = n1+n2+n3;
+    return(pps);
  }
