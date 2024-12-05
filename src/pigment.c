@@ -702,7 +702,7 @@ int getPaintRangeValueHelper (gRange_t getType, paint_t* pp, int i, int* value) 
 
 paint_t* paletteFullHelper(paint_t* pp, int* n, char proptype, int propval){
     //error check inputs
-    if(pp== NULL || n<0){
+    if(pp== NULL || n<0 || proptype == NULL){
         return(NULL);
     }
 
