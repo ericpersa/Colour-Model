@@ -903,53 +903,7 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char* color){
 
     //set n equal to sum of array 1+2+3
     *n = n1+n2+n3;
-        
-        /***
-        //traverse all 3 arrays, check to see if struct has the correct properties and add to full array
-        //array 1
-        for(int i = 0: i<n1; i++){
-            if(array1[i].proptype == propval){
-                if(count == size){
-                    size += 10; 
-                    pps = realoc(pps, size*sizeof(paint_t));
-                }
-                getPaintValueHelperCopy(pps, array1, count, i);
-                count ++;
-            }
-        }
-        //array 2
-        for(int i = 0: i<n2; i++){
-            if(array2[i].proptype == propval){
-                if(count == size){
-                    size += 10; 
-                    pps = realoc(pps, size*sizeof(paint_t));
-                }
-                getPaintValueHelperCopy(pps, array2, count, i);
-                count ++;
-            }
-        }
-        //array 3 
-        for(int i = 0: i<n3; i++){
-            if(array3[i].proptype == propval){
-                if(count == size){
-                    size += 10; 
-                    pps = realoc(pps, size*sizeof(paint_t));
-                }
-                getPaintValueHelperCopy(pps, array3, count, i);
-                count ++;
-            }
-        }
-        
-
-        //free dynamic arrays
-        free(array1);
-        free(array2);
-        free(array3);
-        array1 = NULL;
-        array2 = NULL;
-        array3 = NULL;
-        */
-
+    
     //return array
     return(pps);
 
