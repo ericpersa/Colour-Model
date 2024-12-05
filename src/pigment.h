@@ -1,5 +1,5 @@
 // ID BOX: Eric Persa 3123945
-// ID BOX : Jenna Leaw 3147578
+// ID BOX : Jenna Leew 3147578
 
 typedef enum {
     HUE,
