@@ -483,6 +483,7 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
     int propval[5];
     char* token;
     paint_t pps;
+    int ncopy = *n;
 
     //error check 
     if( pp == NULL || n<0){
@@ -498,7 +499,7 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
     propval = atoi(strtok(NULL, "\0"));
 
     //determine other colours needed based on the palette type
-    //tpye full
+    //type full
     if(palette == "full"){
         if(proptype == NULL){
             return pp;
@@ -508,7 +509,6 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
     }
     //type triad
     else if(palette == "triad"){
-        int ncopy = *n;
         //get unsorted array of colors, then send to helper to get palette with only values that fit properties 
         print_t* unsortedpps = paletteTriadHelper(pp, ncopy, color);
 
@@ -548,25 +548,18 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
         if(proptype == NULL){
             return(unsortedpps);
         }
+        pps = paletteFullHelper(unsortedpps, ncopy, proptype, propval);
 
+        //free unsorted since it is done being used
+        free(unsortedpps);
+        unsortedpps = NULL;
 
+        return(pps);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //if palette entered is not a valid palette type
+    else(
+        return(NULL);
+    )
 }
 
 // helper functions
