@@ -473,6 +473,80 @@ int getPaintHueSwitchHelper(colour_t colour, int* hue_range_low, int* hue_range_
     return 0;
 }
 
+paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
+    
+    char palette[20];
+    char color[50];
+    char proptype[50];
+    int propval[5];
+    char* token;
+    paint_t pps;
+
+    //error check 
+    if( pp == NULL || n<0){
+        return NULL;
+    }
+    
+    //separate the palette type from the colour specified 
+    palette = strtok(type, ":");
+    color = strtok(NULL, "\0");
+    
+    //seperate the property type from the value specified 
+    proptype = strtok(properties, ":");
+    propval = atoi(strtok(NULL, "\0"));
+
+    //determine other colours needed based on the palette type
+    if(palette == "full"){
+        if(proptype == NULL){
+            return pp;
+        }
+        
+
+
+
+    }
+    else if(palette == "triad"){
+        pps = paletteTriadHelper(pp, n, color, proptype, propval);
+        return(pps);
+    }
+
+    
+    else if(palette == "complementary"){
+        if(color == "YELLOW" || color == "VIOLET"){
+
+        }
+        else if(color == "YELLOW-ORANGE" || color == "BLUE-VOILET"){
+
+        }
+        else if(color == "BLUE" || color == "ORANGE"){
+
+        }
+        else if(color == "RED-ORANGE" || color == "BLUE-GREEN"){
+
+        }
+        else if(color == "RED" || color == "GREEN"){
+
+        }
+        else if(color == "RED-VIOLET" || color == "YELLOW-GREEN"){
+
+        }
+        else{
+            return(NULL);
+        }
+
+    }
+    else if(palette == "split complementary"){
+
+    }
+
+
+
+
+
+
+
+
+}
 
 // helper functions
 
@@ -610,4 +684,59 @@ int getPaintRangeValueHelper (gRange_t getType, paint_t* pp, int i, int* value) 
             break;
     }   
     return 0;
+}
+
+paint_t* paletteTriadHelper(paint_t* pp, int* n, char color, char proptype, int propval){
+     //get a new n for each call to get back the number of values in sub arrays
+        int n1 = *n;
+        int n2 = *n;
+        int n3 = *n;
+            
+        //create sub arrays for output of getPaintHue
+
+        
+
+        //check colors to find which trio of colors need to be found   
+        if(color == "YELLOW" || color == "RED" || color == "BLUE"){
+            //call getPaintHue to get data
+             = getPaintHue(pp, n1, "YELLOW");
+             = getPaintHue(pp, n2, "RED");
+             = getPaintHue(pp, n3, "BLUE");
+        }
+        else if(color == "YELLOW-ORANGE" || color == "BLUE-GREEN" || color == "RED-VIOLET"){
+             = getPaintHue(pp, n1, "YELLOW-ORANGE");
+             = getPaintHue(pp, n2, "BLUE-GREEN");
+             = getPaintHue(pp, n3, "RED_VIOLET");
+        }
+        else if(color == "ORANGE" || color == "GREEN" || color == "VIOLET"){
+             = getPaintHue(pp, n1, "ORANGE");
+             = getPaintHue(pp, n2, "GREEN");
+             = getPaintHue(pp, n3, "VIOLET");
+        }   
+        else if(color == "RED-ORANGE" || color == "YELLOW-GREEN" || color == "BLUE-VOILET"){
+             = getPaintHue(pp, n1, "RED-ORANGE");
+             = getPaintHue(pp, n2, "YELLOW-GREEN");
+             = getPaintHue(pp, n3, "BLUE-VIOLET");
+        }
+
+        //create dynamic array for putting final array into
+        int size = 1;
+        paint_t* pps = malloc(size * sizeof(paint_t));
+        if (pps == NULL) {
+            printf("Failed to allocate memory");
+            return(NULL);
+        }
+        int count = 0;
+
+        //traverse all 3 arrays, check to see if struct has the correct properties and add to full array
+        for(int i = 0: i<n1; i++){
+            if(array1[i].proptype == propval){
+                if(count == size){
+                    size += 10; 
+                    pps = realoc(pps, size*sizeof(paint_t));
+                }
+                pps[count] = 
+                count ++;
+            }
+        }
 }
