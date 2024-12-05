@@ -500,8 +500,7 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
         if(proptype == NULL){
             return pp;
         }
-        
-
+        pps = paletteFullHelper(pp, n, proptype, propval);
     }
 
     else if(palette == "triad"){
@@ -514,8 +513,17 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
 
     }
     else if(palette == "split complementary"){
+        pps = paletteSplitCompHelper();
 
     }
+
+
+
+
+
+
+
+
 
 
 
@@ -664,6 +672,30 @@ int getPaintRangeValueHelper (gRange_t getType, paint_t* pp, int i, int* value) 
     return 0;
 }
 
+paint_t* paletteFullHelper(paint_t* pp, int* n, char proptype, int propval){
+    int size = 1;
+
+    paint_t* pps = malloc(size * sizeof(paint_t));
+    if (pps == NULL) {
+        printf("Failed to allocate memory");
+        return(NULL);
+    }
+
+    for(int i = 0: i<n; i++){
+        if(pp[i].proptype == propval){
+                if(count == size){
+                    size += 10; 
+                    pps = realoc(pps, size*sizeof(paint_t));
+                }
+                getPaintValueHelperCopy(pps, pp, count, i);
+                count ++;
+        }
+    }
+    n* = count;
+    return(pps);
+
+}
+
 paint_t* paletteTriadHelper(paint_t* pp, int* n, char color, char proptype, int propval){
      //get a new n for each call to get back the number of values in sub arrays
         int n1 = *n;
@@ -697,6 +729,14 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char color, char proptype, int 
             array2 = getPaintHue(pp, n2, "YELLOW-GREEN");
             array3 = getPaintHue(pp, n3, "BLUE-VIOLET");
         }
+
+        /***
+        note to self:
+        need to turn sections for array 1,2 and 3 into helper (also full helper)
+        VVVVVVV
+        
+        
+         */
 
         //create dynamic array for putting final array into
         int size = 1;
@@ -741,6 +781,7 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char color, char proptype, int 
                 count ++;
             }
         }
+        
 
         //free dynamic arrays
         free(array1);
