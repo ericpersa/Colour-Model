@@ -230,7 +230,7 @@ get palette -
         ranges of the palette and contain desired properties
  */
 
- paint_t* paletteFullHelper(paint_t* pp, int* n, char proptype, int propval);
+ paint_t* paletteFullHelper(paint_t* pp, int* n, char* proptype, int propval);
  /***
     Purpose: creates a dynamic array to store sub array of values that fit the inputed property type and value
     Input:
@@ -245,7 +245,7 @@ get palette -
     Return: subarray of structures that match propval 
   */
 
-paint_t* paletteTriadHelper(paint_t* pp, int* n, char color);
+paint_t* paletteTriadHelper(paint_t* pp, int* n, char* color);
 /***
     Purpose: if the pallet type is triad this function checks to see whcih of 4 groups of palettes the given
         colour is present within, once identified getPaintHue is called for each color in the pallet and 3
@@ -260,7 +260,7 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char color);
     Return: subarray of structures with colors within the 3 colors in triad palette 
  */
 
- paint_t* paletteComplementaryHelper(paint_t* pp, int* n, char color);
+ paint_t* paletteComplementaryHelper(paint_t* pp, int* n, char* color);
  /***
     Purpose: if the palette type is complementary colors, this function checks to see which of 6 pallets the 
         given colour is present in, once identified getPaintHue is called and 2 subarrays are formed for the 
@@ -275,7 +275,7 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char color);
     Return: subarray of structures with colours within ranges of 2 colors in palette
   */
 
-  paint_t* paletteSplitCompHelper(paint_t* pp, int* n, char color);
+  paint_t* paletteSplitCompHelper(paint_t* pp, int* n, char* color);
   /***
     Purpose: if the palette type is split complementary colours, this function checks to see which of the 12 possible
         pallets the given color is present within, once identified getPainthue is called and 3 subarrays are formed
@@ -289,5 +289,5 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char color);
             specifying colour to determine the palette
     Return: subarray of structures containing colours that fit within ranges of 3 palette colors 
    */
-   
+
 
