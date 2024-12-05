@@ -502,37 +502,15 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
         }
         
 
-
-
     }
+
     else if(palette == "triad"){
         pps = paletteTriadHelper(pp, n, color, proptype, propval);
         return(pps);
     }
-
-    
     else if(palette == "complementary"){
-        if(color == "YELLOW" || color == "VIOLET"){
-
-        }
-        else if(color == "YELLOW-ORANGE" || color == "BLUE-VOILET"){
-
-        }
-        else if(color == "BLUE" || color == "ORANGE"){
-
-        }
-        else if(color == "RED-ORANGE" || color == "BLUE-GREEN"){
-
-        }
-        else if(color == "RED" || color == "GREEN"){
-
-        }
-        else if(color == "RED-VIOLET" || color == "YELLOW-GREEN"){
-
-        }
-        else{
-            return(NULL);
-        }
+        pps = paletteComplementaryHelper(pp, n, color, proptype, propval);
+        return(pps);
 
     }
     else if(palette == "split complementary"){
@@ -692,31 +670,32 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char color, char proptype, int 
         int n2 = *n;
         int n3 = *n;
             
-        //create sub arrays for output of getPaintHue
-
-        
+        //create pointers for sub arrays for output of getPaintHue
+        paint_t* array1;
+        paint_t* array2;
+        paint_t* array3;
 
         //check colors to find which trio of colors need to be found   
         if(color == "YELLOW" || color == "RED" || color == "BLUE"){
             //call getPaintHue to get data
-             = getPaintHue(pp, n1, "YELLOW");
-             = getPaintHue(pp, n2, "RED");
-             = getPaintHue(pp, n3, "BLUE");
+            array1 = getPaintHue(pp, n1, "YELLOW");
+            array2 = getPaintHue(pp, n2, "RED");
+            array3 = getPaintHue(pp, n3, "BLUE");
         }
         else if(color == "YELLOW-ORANGE" || color == "BLUE-GREEN" || color == "RED-VIOLET"){
-             = getPaintHue(pp, n1, "YELLOW-ORANGE");
-             = getPaintHue(pp, n2, "BLUE-GREEN");
-             = getPaintHue(pp, n3, "RED_VIOLET");
+            array1 = getPaintHue(pp, n1, "YELLOW-ORANGE");
+            array2 = getPaintHue(pp, n2, "BLUE-GREEN");
+            array3 = getPaintHue(pp, n3, "RED_VIOLET");
         }
         else if(color == "ORANGE" || color == "GREEN" || color == "VIOLET"){
-             = getPaintHue(pp, n1, "ORANGE");
-             = getPaintHue(pp, n2, "GREEN");
-             = getPaintHue(pp, n3, "VIOLET");
+            array1 = getPaintHue(pp, n1, "ORANGE");
+            array2 = getPaintHue(pp, n2, "GREEN");
+            array3 = getPaintHue(pp, n3, "VIOLET");
         }   
         else if(color == "RED-ORANGE" || color == "YELLOW-GREEN" || color == "BLUE-VOILET"){
-             = getPaintHue(pp, n1, "RED-ORANGE");
-             = getPaintHue(pp, n2, "YELLOW-GREEN");
-             = getPaintHue(pp, n3, "BLUE-VIOLET");
+            array1 = getPaintHue(pp, n1, "RED-ORANGE");
+            array2 = getPaintHue(pp, n2, "YELLOW-GREEN");
+            array3 = getPaintHue(pp, n3, "BLUE-VIOLET");
         }
 
         //create dynamic array for putting final array into
@@ -729,14 +708,74 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char color, char proptype, int 
         int count = 0;
 
         //traverse all 3 arrays, check to see if struct has the correct properties and add to full array
+        //array 1
         for(int i = 0: i<n1; i++){
             if(array1[i].proptype == propval){
                 if(count == size){
                     size += 10; 
                     pps = realoc(pps, size*sizeof(paint_t));
                 }
-                pps[count] = 
+                getPaintValueHelperCopy(pps, array1, count, i);
                 count ++;
             }
         }
+        //array 2
+        for(int i = 0: i<n2; i++){
+            if(array2[i].proptype == propval){
+                if(count == size){
+                    size += 10; 
+                    pps = realoc(pps, size*sizeof(paint_t));
+                }
+                getPaintValueHelperCopy(pps, array2, count, i);
+                count ++;
+            }
+        }
+        //array 3 
+        for(int i = 0: i<n3; i++){
+            if(array3[i].proptype == propval){
+                if(count == size){
+                    size += 10; 
+                    pps = realoc(pps, size*sizeof(paint_t));
+                }
+                getPaintValueHelperCopy(pps, array3, count, i);
+                count ++;
+            }
+        }
+
+        //free dynamic arrays
+        free(array1);
+        free(array2);
+        free(array3);
+        array1 = NULL;
+        array2 = NULL;
+        array3 = NULL;
+
+        //return array
+        return(pps);
+
+}
+
+paint_t* paletteComplementaryHelper(paint_t* pp, int* n, char color, char proptype, int propval){
+    if(color == "YELLOW" || color == "VIOLET"){
+
+    }
+    else if(color == "YELLOW-ORANGE" || color == "BLUE-VOILET"){
+
+    }
+    else if(color == "BLUE" || color == "ORANGE"){
+
+    }
+    else if(color == "RED-ORANGE" || color == "BLUE-GREEN"){
+
+    }
+    else if(color == "RED" || color == "GREEN"){
+
+    }
+    else if(color == "RED-VIOLET" || color == "YELLOW-GREEN"){
+
+    }
+     else{
+        return(NULL);
+    }
+
 }
