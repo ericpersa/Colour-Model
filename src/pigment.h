@@ -194,3 +194,8 @@ input: colour, a enum type, and a pointer to hue_range_low and high which will s
 hueAngles at which the colour is found
 return: 1 or 0 based on success or failure, hue_range ints are modified.
 */
+
+int printMenu(void);
+/*
+    Prints out the main menu of the program.
+*/
