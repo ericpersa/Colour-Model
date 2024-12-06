@@ -489,19 +489,35 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
     if( pp == NULL || n<0){
         return NULL;
     }
-    
+    printf("Null check complete\n");
+    printf("%s\n", type);
     //separate the palette type from the colour specified 
     token = strtok(type, ":");
     strcpy(palette, token);
+
+    // printf("Quarter token\n");
+
     token = strtok(NULL, "\0");
     strcpy(color, token);
-    
-    //seperate the property type from the value specified 
-    token = strtok(properties, ":");
-    strcpy(proptype, token);
-    token = strtok(NULL, "\0");
-    propval = atoi(token);
 
+    printf("Halfway token\n");
+    
+    if(properties != NULL){
+        printf("%s\n", properties);
+        //seperate the property type from the value specified 
+        token = strtok(properties, ":");
+        strcpy(proptype, token);
+        token = strtok(NULL, "\0");
+        propval = atoi(token);
+    }
+    else{
+        strcpy(proptype, "NULL");
+        propval = -1;
+    }
+
+
+
+    printf("Helper functions start\n");
     //determine other colours needed based on the palette type
     //type full
     if(strcmp(palette, "full")==0){
@@ -509,15 +525,20 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
             return pp;
         }
         pps = paletteFullHelper(pp, n, proptype, propval);
+        *n = ncopy;
         return(pps);
     }
     //type triad
     else if(strcmp(palette, "triad")==0){
         //get unsorted array of colors, then send to helper to get palette with only values that fit properties 
+        printf("Triad if statement entered\n");
         paint_t* unsortedpps = paletteTriadHelper(pp, &ncopy, color);
+        printf("prop type: %s\n", proptype);
 
         // if there are no properties to sort through return subarray
-        if(proptype == NULL){
+        if(strcmp(proptype, "NULL") == 0){
+            printf("prop type null\n");
+            *n = ncopy;
             return(unsortedpps);
         }
         pps = paletteFullHelper(unsortedpps, &ncopy, proptype, propval);
@@ -527,6 +548,8 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
         unsortedpps = NULL;
 
         //return sorted palette
+        *n = ncopy;
+        printf("*n leaving getPalette: %d\n", *n);
         return(pps);
     }
     //type complementary
@@ -543,6 +566,7 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
         free(unsortedpps);
         unsortedpps = NULL;
 
+        *n = ncopy;
         return(pps);
     }
     //type split complementary
@@ -558,9 +582,11 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
         free(unsortedpps);
         unsortedpps = NULL;
 
+        *n = ncopy;
         return(pps);
     }
     //if palette entered is not a valid palette type
+    printf("Invalid palette\n");
     return(NULL);
     
 }
@@ -705,8 +731,11 @@ int getPaintRangeValueHelper (gRange_t getType, paint_t* pp, int i, int* value) 
 
 paint_t* paletteFullHelper(paint_t* pp, int* n, char* proptype, int propval){
     //error check inputs
-    if(pp== NULL || n<0 || proptype == NULL){
+    if(pp== NULL || n<0){
         return(NULL);
+    }
+    if(proptype == NULL){
+        return(pp);
     }
 
     int size = 1;
@@ -822,6 +851,7 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char* color){
     int n2 = *n;
     int n3 = *n;
         
+    printf("TRAID HELPER ENTERED\n");
     //create pointers for sub arrays for output of getPaintHue
     paint_t* array1;
     paint_t* array2;
@@ -853,6 +883,8 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char* color){
     else{
         return(NULL);
     }
+
+    printf("GOT PAINT HUES\n");
 
     //create dynamic array for putting final array into
     int size = 1;
@@ -902,8 +934,10 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char* color){
     }
 
     //set n equal to sum of array 1+2+3
-    *n = n1+n2+n3;
-    
+    // *n = n1+n2+n3;
+    *n = count;
+    printf("*n at the end of triad helper: %d\n", *n);
+
     //return array
     return(pps);
 
