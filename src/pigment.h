@@ -241,7 +241,7 @@ get palette -
         pp:
             a pointer to paint array containing paint_t structures for each paint in paint.dat 
         n:
-            pointer to an interger of the number of paint_t structures within pp
+            pointer to an integer of the number of paint_t structures within pp
         type:
             a character string with two values palette type and palette color
         properties:
