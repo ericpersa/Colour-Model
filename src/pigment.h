@@ -1,5 +1,5 @@
 // ID BOX: Eric Persa 3123945
-// ID BOX : Jenna Leaw 3147578
+// ID BOX : Jenna Leew 3147578
 
 typedef enum {
     HUE,
@@ -131,7 +131,23 @@ int printPaint(paint_t* pp, int i, int n); // question 2 of milestone 2
     */
 
 paint_t* getPaintValue(paint_t*, int, char*, gValue_t, int*);
-
+/***
+get paint value - 
+    purpose: inputs type (enum) of value to look for as well as string to look for, code will look through
+        the pp array of paints and look for the correlating value in the column given type
+        
+    input:
+        pp:
+            pointer to loaded array of paint data
+        npp
+            number of elements within the paint data array
+        name:
+            name that the code is looking to match within the array
+        getType:
+            enumeration of ciName, marketingName, manufacturer
+        nspp:
+            pointer to the number of elements found that contain the same value as name
+    ***/
 
 int printPaintHelper(paint_t* pp, int j);
 /* 
@@ -214,3 +230,84 @@ int palettePropertyHelper(char* paletteProperty);
 /*
     Helper function in paintProgram.c for setting the paletteProperty
 */
+
+paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties);
+/***
+get palette - 
+    Purpose: depending on given palette type (type), palette color(type), property(properties) and property value(properties),
+        function will return a pallet of all colours that fit within specified pallet pattern based on the inputted palette color, 
+        only containing the inputted value of specified property
+    Input: 
+        pp:
+            a pointer to paint array containing paint_t structures for each paint in paint.dat 
+        n:
+            pointer to an interger of the number of paint_t structures within pp
+        type:
+            a character string with two values palette type and palette color
+        properties:
+            a character string with two values property type and property value
+    Return: paint_t array containing a subarray of main paint array only containing the paints that are within desired color 
+        ranges of the palette and contain desired properties
+ */
+
+ paint_t* paletteFullHelper(paint_t* pp, int* n, char* proptype, int propval);
+ /***
+    Purpose: creates a dynamic array to store sub array of values that fit the inputed property type and value
+    Input:
+        pp: 
+            pointer to paint array containing paint_t structures for paints in paint.dat 
+        n:
+            pointer to an interger of size of pp array
+        proptype:
+            the type of property within paint_t structure that needs to be checked for correct value
+        propval: 
+            value that proptype needs to be in order for struct to be added to the subarray
+    Return: subarray of structures that match propval 
+  */
+
+paint_t* paletteTriadHelper(paint_t* pp, int* n, char* color);
+/***
+    Purpose: if the pallet type is triad this function checks to see whcih of 4 groups of palettes the given
+        colour is present within, once identified getPaintHue is called for each color in the pallet and 3
+        sub arrays are formed, these subarrays are combined and returned
+    Input:
+        pp: 
+            pointer to paint array containing paint_t structures for paints within paints.dat
+        n: 
+            pointer to size of pp array
+        color:
+            the color needed to determine which palette will be used 
+    Return: subarray of structures with colors within the 3 colors in triad palette 
+ */
+
+ paint_t* paletteComplementaryHelper(paint_t* pp, int* n, char* color);
+ /***
+    Purpose: if the palette type is complementary colors, this function checks to see which of 6 pallets the 
+        given colour is present in, once identified getPaintHue is called and 2 subarrays are formed for the 
+        2 complementary colors in the pallet, subarrays are combines and returned 
+    Input:
+        pp:
+            pointer to paint array containing paint_t structures for paints within paints.dat
+        n: 
+            pointer to size of pp array
+        color:
+            specifying colour to determine the palette
+    Return: subarray of structures with colours within ranges of 2 colors in palette
+  */
+
+  paint_t* paletteSplitCompHelper(paint_t* pp, int* n, char* color);
+  /***
+    Purpose: if the palette type is split complementary colours, this function checks to see which of the 12 possible
+        pallets the given color is present within, once identified getPainthue is called and 3 subarrays are formed
+        for the colors presnet in palette, subarrays are combined and returned
+    Input:
+        pp:
+            pointer to paint array containing paint_t structures for paints within paints.dat
+        n:
+            pointer to size of pp array
+        color:
+            specifying colour to determine the palette
+    Return: subarray of structures containing colours that fit within ranges of 3 palette colors 
+   */
+
+

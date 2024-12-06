@@ -1,6 +1,6 @@
 #makefile project milestone 2
 # ID BOX: Eric Persa 3123945
-# ID BOX : Jenna Leaw 3147578
+# ID BOX : Jenna Leew 3147578
 
 CC = gcc
 CFLAGS = -Wall -std=c11
@@ -36,6 +36,11 @@ test_colour: test_colour.o pigment.o
 	$(CC) $(CFLAGS) $^ -o $@
 	- mv *.o ../obj
 	- mv test_colour ../bin
+
+test_palette: test_palette.o pigment.o
+	$(CC) $(CFLAGS) $^ -o $@
+	- mv *.o ../obj
+	- mv test_palette ../bin
 
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $< $(LDFLAGS)
