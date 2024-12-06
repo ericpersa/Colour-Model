@@ -404,11 +404,10 @@ paint_t* getPaintHue(paint_t* pp, int* n, colour_t colour) {
             index++;
         }
     }
-    printf("%d",index);
     /* n that we got is the size of the full paint array, want it to return size of
     newly made array, which should be tracked by index
     */
-   *n = index;
+    *n = index;
     return spa;
 }
 
@@ -489,21 +488,20 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
     if( pp == NULL || n<0){
         return NULL;
     }
-    printf("Null check complete\n");
-    printf("%s\n", type);
-    //separate the palette type from the colour specified 
-    token = strtok(type, ":");
-    strcpy(palette, token);
 
-    // printf("Quarter token\n");
+    if(strcmp(type, "full")== 0){
+        strcpy(palette, type);
+        strcpy(color, "NULL");
+    }
+    else{
+        //separate the palette type from the colour specified 
+        token = strtok(type, ":");
+        strcpy(palette, token);
+        token = strtok(NULL, "\0");
+        strcpy(color, token);
+    }
 
-    token = strtok(NULL, "\0");
-    strcpy(color, token);
-
-    printf("Halfway token\n");
-    
     if(properties != NULL){
-        printf("%s\n", properties);
         //seperate the property type from the value specified 
         token = strtok(properties, ":");
         strcpy(proptype, token);
@@ -515,29 +513,23 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
         propval = -1;
     }
 
-
-
-    printf("Helper functions start\n");
     //determine other colours needed based on the palette type
-    //type full
+    //type full with a color
     if(strcmp(palette, "full")==0){
-        if(proptype == NULL){
-            return pp;
-        }
-        pps = paletteFullHelper(pp, n, proptype, propval);
+        pps = paletteFullHelper(pp, &ncopy, proptype, propval);
+        // if(strcmp(proptype, "NULL") == 0){
+        //     return (pps);
+        // }
         *n = ncopy;
         return(pps);
     }
     //type triad
     else if(strcmp(palette, "triad")==0){
         //get unsorted array of colors, then send to helper to get palette with only values that fit properties 
-        printf("Triad if statement entered\n");
         paint_t* unsortedpps = paletteTriadHelper(pp, &ncopy, color);
-        printf("prop type: %s\n", proptype);
 
         // if there are no properties to sort through return subarray
         if(strcmp(proptype, "NULL") == 0){
-            printf("prop type null\n");
             *n = ncopy;
             return(unsortedpps);
         }
@@ -549,15 +541,15 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
 
         //return sorted palette
         *n = ncopy;
-        printf("*n leaving getPalette: %d\n", *n);
+        
         return(pps);
     }
-    //type complementary
-    else if(strcmp(palette, "complementary")==0){
-        paint_t* unsortedpps = paletteComplementaryHelper(pp, &ncopy, color);
-
+    //type complimentary
+    else if(strcmp(palette, "complimentary")==0){
+        paint_t* unsortedpps = paletteComplementaryHelper(pp, &ncopy, color); 
         // if there are no properties to sort through return subarray
-        if(proptype == NULL){
+        if(strcmp(proptype, "NULL") == 0){
+            *n = ncopy;
             return(unsortedpps);
         }
         pps = paletteFullHelper(unsortedpps, &ncopy, proptype, propval);
@@ -573,7 +565,8 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
     else if(strcmp(palette, "split complementary")==0){
         paint_t* unsortedpps = paletteSplitCompHelper(pp, &ncopy, color);
         // if there are no properties to sort through return subarray
-        if(proptype == NULL){
+        if(strcmp(proptype, "NULL") == 0){
+            *n = ncopy;
             return(unsortedpps);
         }
         pps = paletteFullHelper(unsortedpps, &ncopy, proptype, propval);
@@ -734,8 +727,13 @@ paint_t* paletteFullHelper(paint_t* pp, int* n, char* proptype, int propval){
     if(pp== NULL || n<0){
         return(NULL);
     }
-    if(proptype == NULL){
-        return(pp);
+    //if the proptype is null return copy of entire array
+    if(strcmp(proptype, "NULL") == 0){
+        paint_t* pps = malloc((*n) *sizeof(paint_t));
+        for(int i=0; i<*n; i++){
+            getPaintValueHelperCopy(pps, pp, &i, i);
+        }
+        return(pps);
     }
 
     int size = 1;
@@ -851,7 +849,6 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char* color){
     int n2 = *n;
     int n3 = *n;
         
-    printf("TRAID HELPER ENTERED\n");
     //create pointers for sub arrays for output of getPaintHue
     paint_t* array1;
     paint_t* array2;
@@ -883,8 +880,6 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char* color){
     else{
         return(NULL);
     }
-
-    printf("GOT PAINT HUES\n");
 
     //create dynamic array for putting final array into
     int size = 1;
@@ -936,7 +931,6 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char* color){
     //set n equal to sum of array 1+2+3
     // *n = n1+n2+n3;
     *n = count;
-    printf("*n at the end of triad helper: %d\n", *n);
 
     //return array
     return(pps);
@@ -980,6 +974,7 @@ paint_t* paletteComplementaryHelper(paint_t* pp, int* n, char* color){
         return(NULL);
     }
 
+
     //create dynamic sub array for colours 
     int size = 1;
     paint_t* pps = malloc(size * sizeof(paint_t));
@@ -997,7 +992,7 @@ paint_t* paletteComplementaryHelper(paint_t* pp, int* n, char* color){
             pps = realloc(pps, size*sizeof(paint_t));
         }
         ret = getPaintValueHelperCopy(pps, array1, &count, i);
-            count ++;
+        count ++;
     }
     //error check copy
     if(ret == 1){
@@ -1010,14 +1005,14 @@ paint_t* paletteComplementaryHelper(paint_t* pp, int* n, char* color){
             pps = realloc(pps, size*sizeof(paint_t));
         }
         ret = getPaintValueHelperCopy(pps, array2, &count, i);
-            count ++;
+        count ++;
     }
     //error check copy
     if(ret == 1){
         return(NULL);
     }
     //set n equal to sum of array 1+2
-    *n = n1+n2;
+    *n = count;
     return(pps);
 }
 
@@ -1099,52 +1094,57 @@ paint_t* paletteComplementaryHelper(paint_t* pp, int* n, char* color){
         array3 = getPaintHue(pp, &n3, RED);
     }
 
-    int size = 1;
+    int size = n1 + n2 + n3 + 1;
     paint_t* pps = malloc(size * sizeof(paint_t));
     if (pps == NULL) {
         printf("Failed to allocate memory");
         return(NULL);
     }
 
+
     //implement all colours into one array
     int count = 0;
     int ret;
     for(int i = 0; i<n1; i++){
-        if(count == size){
-            size += 10; 
-            pps = realloc(pps, size*sizeof(paint_t));
-        }
+        // if(count == size){
+        //     size += 10; 
+        //     pps = realloc(pps, size*sizeof(paint_t));
+        // }
         ret = getPaintValueHelperCopy(pps, array1, &count, i);
-            count ++;
+        count++;
     }
     //error check copy
     if(ret ==1){
         return(NULL);
     }
+
     for(int i = 0; i<n2; i++){
-        if(count == size){
-            size += 10; 
-            pps = realloc(pps, size*sizeof(paint_t));
-        }
-        ret =getPaintValueHelperCopy(pps, array2, &count, i);
-            count ++;
+        // if(count == size){
+        //     size += 10; 
+        //     pps = realloc(pps, size*sizeof(paint_t));
+        // }
+        ret = getPaintValueHelperCopy(pps, array2, &count, i);
+        count++;
     }
     //error check copy
     if(ret ==1){
         return(NULL);
     }
+
     for(int i = 0; i<n3; i++){
-        if(count == size){
-            size += 10; 
-            pps = realloc(pps, size*sizeof(paint_t));
-        }
+        // if(count == size){
+        //     size += 10; 
+        //     pps = realloc(pps, size*sizeof(paint_t));
+        // }
         ret = getPaintValueHelperCopy(pps, array3, &count, i);
-            count ++;
+        count++;
     }
     //error check copy
     if(ret ==1){
         return(NULL);
     }
+
+
 
     //set n equal to sum of array 1+2+3
     *n = n1+n2+n3;

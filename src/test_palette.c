@@ -21,38 +21,33 @@ int main(void){
     printf("File opened\n");
     //dynamically allocate paint array of structures
     paint_t* pp = malloc(sizeof(paint_t));
-    printf("initial malloc success\n");
     
     // call paint function and check output
     pp= loadPaintData("../data/paints.dat", pp ,&paint_count);
-
-    printf("load successful\n");
     if(pp == NULL){
-        printf("Error loading paint_t\n");
+        printf("Error loading paint\n");
         return(1);
     }
 
     //test conditions 
     char type[] = "triad:YELLOW";
     //char type[] = "complimentary:GREEN";
-    //char type[] = "split complementary: ORANGE";
+    //char type[] = "split complementary:ORANGE";
+    //char type[] = "full:NULL";
+    //char type[] = "full";
     char* properties = NULL;
-    // char properties[] = "granulating:4";
+    //  char properties[] = "granulating:4";
     //char properties[] = "transparency:2";
-    //char properties[] = "valueRange:50";
+    //char properties[] = "value range:50";
 
-    //paint_t newpalette = malloc()
-    printf("Entering getPalette\n");
     paint_t* newpalette = getPalette(pp, &paint_count, type, properties);
-    printf("Exiting getPalette\n");
-
 
     //error check
     if(newpalette == NULL){
-        printf("Error in creating new palette");
+        printf("Error in creating new palette\n");
         return(1);
     }
-    printf("%i\n", paint_count);
+    
     //print out all paints in pallete
     printPaint(newpalette, -1, paint_count);
 
