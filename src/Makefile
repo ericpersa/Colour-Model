@@ -8,6 +8,11 @@ VPATH = ../bin ../obj
 
 #normal targets
 
+paintProgram: paintProgram.o pigment.o
+	$(CC) $(CFLAGS) $^ -o $@
+	- mv *.o ../obj
+	- mv paintProgram ../bin
+
 test_load: test_load.o pigment.o
 	$(CC) $(CFLAGS) $^ -o $@
 	- mv *.o ../obj
@@ -40,7 +45,7 @@ test_colour: test_colour.o pigment.o
 .PHONY: clean package
 
 clean: test_load test_value test_range test_range_debug
-	rm -f ../bin/test_load ../bin/test_value ../bin/test_range ../obj/*.o test_range_debug
+	rm -f ../bin/test_load ../bin/test_value ../bin/test_range ../obj/*.o test_range_debug ../bin/paintProgram
 
 package: *.c *.h makefile
 	tar -czvf cmpt201_project01_EP_JL.tar.gz *.c *.h makefile

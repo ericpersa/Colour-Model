@@ -54,6 +54,9 @@ int main(void) {
     }
 }
 
+
+
+
 void printMenu(char* paletteType, char* paletteProperty) {
     printf("(0) Quit\n");
     printf("(1) Enter a Palette type (Currently set at: %s)\n", ((paletteType && paletteType[0] != '\0') ? paletteType : "None"));
