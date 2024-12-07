@@ -2,7 +2,7 @@
 
 # COMPILATION
 
-# Milestone 2
+# Milestone 3
 To compile and run the project:
 1. Ensure you have the necessary environment and dependencies installed:
     - A C compiler (e.g. GCC)
@@ -17,6 +17,9 @@ To compile and run the project:
     ./test_load
     ./test_value
     ./test_range
+    ./test_palette
+    ./paintProgram
+    ./test_colour
 
 
 # Colour Wheel Decisions
