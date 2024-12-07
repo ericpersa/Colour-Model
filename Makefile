@@ -46,4 +46,4 @@ clean: test_load test_value test_range
 	- rm -f obj/*.o
 
 package:
-	tar -czvf cmpt201_project02_EP_JL.tar.gz src/*.c src/*.h src/Makefile obj/ignore.txt data/*.dat bin/ignore.txt Makefile README.md
+	tar -czvf cmpt201_project03_EP_JL.tar.gz src/*.c src/*.h src/Makefile obj/ignore.txt data/*.dat bin/ignore.txt Makefile README.md
