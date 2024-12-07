@@ -46,7 +46,7 @@ int printPaint(paint_t* pp, int i, int n) {
             // first paint struct is *(pp + 0)
             int err = printPaintHelper(pp, j);
             if (err == 1) {
-                // printf("printPaint: error with index -1, printing paints");
+                printf("printPaint: error with index -1, printing paints");
                 continue;
             }
         }
