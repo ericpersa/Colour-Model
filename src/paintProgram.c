@@ -83,7 +83,7 @@ int main(void) {
                         char combined[100];
                         snprintf(combined, sizeof(combined), "%s:%s\n", paletteType, colour);
                         prArr = getPalette(mainArr, &sizeMainArr, combined, NULL);
-                        printPaint(prArr, 0, sizeMainArr);
+                        printPaint(prArr, -1, sizeMainArr);
                     }
                     else {
                         int getValue = valAndValidate(paletteProperty);
