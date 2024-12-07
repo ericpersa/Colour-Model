@@ -501,6 +501,7 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
         strcpy(palette, token);
         token = strtok(NULL, "\0");
         strcpy(color, token);
+         color[strcspn(color, "\n")] = '\0';
     }
 
     if(properties != NULL){
@@ -529,7 +530,6 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
     else if(strcmp(palette, "triad")==0){
         //get unsorted array of colors, then send to helper to get palette with only values that fit properties 
         paint_t* unsortedpps = paletteTriadHelper(pp, &ncopy, color);
-        printPaint(unsortedpps, -1, ncopy);
 
         // if there are no properties to sort through return subarray
         if(strcmp(proptype, "NULL") == 0){
