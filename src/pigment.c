@@ -46,7 +46,8 @@ int printPaint(paint_t* pp, int i, int n) {
             // first paint struct is *(pp + 0)
             int err = printPaintHelper(pp, j);
             if (err == 1) {
-                printf("printPaint: error with index -1, printing paints");
+                // printf("printPaint: error with index -1, printing paints");
+                continue;
             }
         }
         return 0;
@@ -208,7 +209,6 @@ paint_t* loadPaintData( char* filename, paint_t* pArray, int* n){
     if(fd == NULL){
         printf("Invalid File\n");
         //close file and return failure
-        fclose(fd);
         return NULL;
     }
 
@@ -468,6 +468,8 @@ int getPaintHueSwitchHelper(colour_t colour, int* hue_range_low, int* hue_range_
             *hue_range_low = 315;
             *hue_range_high = 345;
             break;
+        case 12:
+            return 1;
     }
     return 0;
 }
@@ -527,6 +529,7 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
     else if(strcmp(palette, "triad")==0){
         //get unsorted array of colors, then send to helper to get palette with only values that fit properties 
         paint_t* unsortedpps = paletteTriadHelper(pp, &ncopy, color);
+        printPaint(unsortedpps, -1, ncopy);
 
         // if there are no properties to sort through return subarray
         if(strcmp(proptype, "NULL") == 0){
@@ -562,7 +565,7 @@ paint_t* getPalette (paint_t* pp, int* n, char* type, char* properties){
         return(pps);
     }
     //type split complementary
-    else if(strcmp(palette, "split complementary")==0){
+    else if(strcmp(palette, "split complimentary")==0){
         paint_t* unsortedpps = paletteSplitCompHelper(pp, &ncopy, color);
         // if there are no properties to sort through return subarray
         if(strcmp(proptype, "NULL") == 0){
@@ -871,7 +874,7 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char* color){
         array2 = getPaintHue(pp, &n2, GREEN);
         array3 = getPaintHue(pp, &n3, VIOLET);
     }   
-    else if(strcmp(color, "RED_ORANGE")==0 || strcmp(color, "YELLOW_GREEN")==0 || strcmp(color, "BLUE_VOILET")==0){
+    else if(strcmp(color, "RED_ORANGE")==0 || strcmp(color, "YELLOW_GREEN")==0 || strcmp(color, "BLUE_VIOLET")==0){
         array1 = getPaintHue(pp, &n1, RED_ORANGE);
         array2 = getPaintHue(pp, &n2, YELLOW_GREEN);
         array3 = getPaintHue(pp, &n3, BLUE_VIOLET);

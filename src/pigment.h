@@ -23,7 +23,8 @@ typedef enum {
     BLUE,
     BLUE_VIOLET,
     VIOLET,
-    RED_VIOLET
+    RED_VIOLET,
+    INVALID // if everything breaks I added this line
 } colour_t;
 
 typedef struct pigment_t {
@@ -101,6 +102,7 @@ pigment_t* loadPigmentData(char* filename, pigment_t* pArray, int* n);
 */
 
 paint_t* getPaintRange(paint_t* pp, int npp, float rmin, float rmax, gRange_t getType, int* nspp);
+
 
 int printPigment(pigment_t* pp, int i, int n); // question 1 of milestone 2
 // question 1 milestone 2
@@ -311,3 +313,12 @@ paint_t* paletteTriadHelper(paint_t* pp, int* n, char* color);
    */
 
 
+char* getColourHelper(char* input);
+/* 
+    Helper in the menu for getting a colour input from the user.
+*/
+
+void getRange(float* low, float* high);
+/*
+    Helper function that gets high low ranges
+*/
