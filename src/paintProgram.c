@@ -84,6 +84,8 @@ int main(void) {
                         snprintf(combined, sizeof(combined), "%s:%s\n", paletteType, colour);
                         prArr = getPalette(mainArr, &sizeMainArr, combined, NULL);
                         printPaint(prArr, -1, sizeMainArr);
+                        free(prArr);
+                        prArr = NULL;
                     }
                     else {
                         int getValue = valAndValidate(paletteProperty);
@@ -93,6 +95,8 @@ int main(void) {
                         snprintf(combined2, sizeof(combined2), "%s:%d\n", paletteProperty, getValue);
                         prArr = getPalette(mainArr, &sizeMainArr, combined, combined2);
                         printPaint(prArr, -1, sizeMainArr);
+                        free(prArr);
+                        prArr = NULL;
                     }
                     
                 }
